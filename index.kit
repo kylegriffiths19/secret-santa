@@ -6,7 +6,7 @@
  * @Author Carl Saggs (2011)
  * @license MIT License
  */
- 
+
 //Very very basic email validation (basically, does it contain an '@')
 function badEmailValidate($email){
 	if(strpos($email,'@') != false) return true;
@@ -30,10 +30,10 @@ if($_POST['count'] && $_POST['count'] > 0){
 	if(sizeof($users)<2) die("Only one valid user was detected. Please ensure you fill out the form fully.");
 	//Ensure we aren't going to send to many emails.
 	if(sizeof($users)>50) die("Sorry, but due to risk of spamming this script is limited on only allow secret santa's of up to 50 people.");
-	
+
 	//Get spend amount
 	$amount = (int) $_POST['amount'];
-	
+
 	//Get Secret Santa Class
 	require ('Santa-script.php');
 
@@ -57,50 +57,36 @@ if($_POST['count'] && $_POST['count'] > 0){
 
 <!-- Hammer includes -->
 <!-- @include _components/_header.kit -->
-<body>
-	
+
 	<div class="title"><h1>Secret Santa</h1></div>
 	<div role="main" class="form">
 		<form action="POST">
-			
+
 			<section class="row">
 				<input type="text" name="name" value="Your Name*" onblur="if(this.value == '') { this.value='Your Name*'}" onfocus="if (this.value == 'Your Name*') {this.value=''}">
 				<input type="text" name="email" value="Your Email*"  onblur="if(this.value == '') { this.value='Your Email*'}" onfocus="if (this.value == 'Your Email*') {this.value=''}">
-				
+
 			</section>
 
 			<section class="row">
 				<input type="text" name="name" value="Your Name*" onblur="if(this.value == '') { this.value='Your Name*'}" onfocus="if (this.value == 'Your Name*') {this.value=''}">
 				<input type="text" name="email" value="Your Email*"  onblur="if(this.value == '') { this.value='Your Email*'}" onfocus="if (this.value == 'Your Email*') {this.value=''}">
-				
+
 			</section>
 
 			<section class="row">
 				<input type="text" name="name" value="Your Name*" onblur="if(this.value == '') { this.value='Your Name*'}" onfocus="if (this.value == 'Your Name*') {this.value=''}">
 				<input type="text" name="email" value="Your Email*"  onblur="if(this.value == '') { this.value='Your Email*'}" onfocus="if (this.value == 'Your Email*') {this.value=''}">
-				
+
 			</section>
 
-			<section class="row">			
-				<input type="text" name="name" value="Your Name*" onblur="if(this.value == '') { this.value='Your Name*'}" onfocus="if (this.value == 'Your Name*') {this.value=''}">
-				<input type="text" name="email" value="Your Email*"  onblur="if(this.value == '') { this.value='Your Email*'}" onfocus="if (this.value == 'Your Email*') {this.value=''}">
-				
-			</section>	
-
-			<section class="row">
-				<input type="text" name="name" value="Your Name*" onblur="if(this.value == '') { this.value='Your Name*'}" onfocus="if (this.value == 'Your Name*') {this.value=''}">
-				<input type="text" name="email" value="Your Email*"  onblur="if(this.value == '') { this.value='Your Email*'}" onfocus="if (this.value == 'Your Email*') {this.value=''}">
-				
-			</section>
-			
-			
 		</form>
 
 	</div>
 
 	<div class="options">
 		<section class="row add">
-			<a href="" class="btn btn-plus ss-icon">&#x002B;</a>
+			<a href="#" class="btn btn-plus ss-icon">&#x002B;</a>
 			<input type="number" min="1" max="50" value="1" class="plus-input">
 		</section>
 

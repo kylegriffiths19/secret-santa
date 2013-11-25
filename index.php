@@ -6,7 +6,7 @@
  * @Author Carl Saggs (2011)
  * @license MIT License
  */
- 
+
 //Very very basic email validation (basically, does it contain an '@')
 function badEmailValidate($email){
 	if(strpos($email,'@') != false) return true;
@@ -30,10 +30,10 @@ if($_POST['count'] && $_POST['count'] > 0){
 	if(sizeof($users)<2) die("Only one valid user was detected. Please ensure you fill out the form fully.");
 	//Ensure we aren't going to send to many emails.
 	if(sizeof($users)>50) die("Sorry, but due to risk of spamming this script is limited on only allow secret santa's of up to 50 people.");
-	
+
 	//Get spend amount
 	$amount = (int) $_POST['amount'];
-	
+
 	//Get Secret Santa Class
 	require ('Santa-script.php');
 
@@ -114,7 +114,6 @@ if($_POST['count'] && $_POST['count'] > 0){
 	-->
 	<link rel="stylesheet" href="_assets/css/libs/normalize.css" />
 	<link rel="stylesheet" href="_assets/css/libs/formalize.css" />
-	<link rel="stylesheet" href="_assets/css/libs/flexslider.css" />
 	<link rel="stylesheet" href="_assets/css/styles.css" />
 
 	<!-- Modernizr -->
@@ -125,50 +124,36 @@ if($_POST['count'] && $_POST['count'] > 0){
 	<!--[if (lt IE 9) & (!IEMobile)]><script src="_assets/js/libs/selectivizr.min.js"></script><![endif]-->
 </head>
 <body>
-	<div class="wrapper"><body>
-	
+	<div class="wrapper">
 	<div class="title"><h1>Secret Santa</h1></div>
 	<div role="main" class="form">
 		<form action="POST">
-			
+
 			<section class="row">
 				<input type="text" name="name" value="Your Name*" onblur="if(this.value == '') { this.value='Your Name*'}" onfocus="if (this.value == 'Your Name*') {this.value=''}">
 				<input type="text" name="email" value="Your Email*"  onblur="if(this.value == '') { this.value='Your Email*'}" onfocus="if (this.value == 'Your Email*') {this.value=''}">
-				
+
 			</section>
 
 			<section class="row">
 				<input type="text" name="name" value="Your Name*" onblur="if(this.value == '') { this.value='Your Name*'}" onfocus="if (this.value == 'Your Name*') {this.value=''}">
 				<input type="text" name="email" value="Your Email*"  onblur="if(this.value == '') { this.value='Your Email*'}" onfocus="if (this.value == 'Your Email*') {this.value=''}">
-				
+
 			</section>
 
 			<section class="row">
 				<input type="text" name="name" value="Your Name*" onblur="if(this.value == '') { this.value='Your Name*'}" onfocus="if (this.value == 'Your Name*') {this.value=''}">
 				<input type="text" name="email" value="Your Email*"  onblur="if(this.value == '') { this.value='Your Email*'}" onfocus="if (this.value == 'Your Email*') {this.value=''}">
-				
+
 			</section>
 
-			<section class="row">			
-				<input type="text" name="name" value="Your Name*" onblur="if(this.value == '') { this.value='Your Name*'}" onfocus="if (this.value == 'Your Name*') {this.value=''}">
-				<input type="text" name="email" value="Your Email*"  onblur="if(this.value == '') { this.value='Your Email*'}" onfocus="if (this.value == 'Your Email*') {this.value=''}">
-				
-			</section>	
-
-			<section class="row">
-				<input type="text" name="name" value="Your Name*" onblur="if(this.value == '') { this.value='Your Name*'}" onfocus="if (this.value == 'Your Name*') {this.value=''}">
-				<input type="text" name="email" value="Your Email*"  onblur="if(this.value == '') { this.value='Your Email*'}" onfocus="if (this.value == 'Your Email*') {this.value=''}">
-				
-			</section>
-			
-			
 		</form>
 
 	</div>
 
 	<div class="options">
 		<section class="row add">
-			<a href="" class="btn btn-plus ss-icon">&#x002B;</a>
+			<a href="#" class="btn btn-plus ss-icon">&#x002B;</a>
 			<input type="number" min="1" max="50" value="1" class="plus-input">
 		</section>
 
@@ -177,7 +162,7 @@ if($_POST['count'] && $_POST['count'] > 0){
 		</section>
 	</div>
 <!-- Hammer includes -->
-	<p>&copy;The Idea Bureau</p>
+	<p>&copy; The Idea Bureau</p>
 
 	</div>
 	<!--
@@ -187,7 +172,7 @@ if($_POST['count'] && $_POST['count'] > 0){
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 	<script src="_assets/js/libs/formalize.min.js"></script>
 	<script>window.jQuery || document.write('<script src="_assets/js/libs/jquery-1.10.1.min.js"><\/script>')</script>
-	<script src="_assets/js/main.js"></script>
+	<script src="_assets/js/main-min.js"></script>
 
 	<!--
 	TODO: Google Analytics: change UA-XXXXX-X to be your site's ID.
