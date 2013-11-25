@@ -70,7 +70,7 @@
 <body>
 	<div class="wrapper"><body>
 	
-	<div class="logo"><p>LOGO HERE</p></div>
+	<div class="title"><h1>Secret Santa</h1></div>
 	<section role="main" class="form">
 		<form action="POST">
 			
@@ -97,6 +97,15 @@
 			<section class="row">
 				<input type="text" name="name" value="Your Name*" onblur="if(this.value == '') { this.value='Your Name*'}" onfocus="if (this.value == 'Your Name*') {this.value=''}">
 				<input type="text" name="email" value="Your Email*"  onblur="if(this.value == '') { this.value='Your Email*'}" onfocus="if (this.value == 'Your Email*') {this.value=''}">
+			</section>
+			
+			<section class="row add">
+				<a href="" class="btn btn-plus ss-icon">&#x002B;</a>
+				<input type="number" min="1" max="50" value="1" class="plus-input">
+			</section>
+
+			<section class="row">
+				<a href="#" class="btn btn-red">Let the magic happen</a>
 			</section>
 		</form>
 	</section>
