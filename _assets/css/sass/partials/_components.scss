@@ -29,32 +29,6 @@
 	margin: 2em 0em;
 }
 
-
-//form
-.form input[type="text"]{
-	width: 45%;
-	border: 0 none;
-	border-bottom: 1px solid $copy;
-	line-height: 1;
-	background-color: $bg;
-	color: $copy;
-	font-size: 1.25em;
-	&:focus{
-		outline: none;
-		box-shadow: none;
-		-webkit-box-shadow: none;
-		-moz-box-shadow: none;
-		-o-box-shadow: none;
-		-ms-box-shadow: none;
-	}
-	&:nth-of-type(odd){
-		margin-right: 9%;
-	}
-}
-
-
-
-
 //Submit Button
 a.btn {
 	@include body-font;
@@ -71,21 +45,28 @@ a.btn {
 	border: 1px solid rgba(0,0,0,0.3);
 	border-bottom-width: 3px;
 	text-shadow: 0 1px 0 rgba(0,0,0,0.5);
+
+	&:hover {
+		border-color: rgba(0,0,0,0.5);
+	}
+
+	&:active {
+		border-bottom-width: 0;
+		border-color: rgba(0,0,0,0.9);
+	}
 }
 
 a.btn.btn-red{
-	background-color: #E48681;
+	background-color: $red;
 }
 a.btn.btn-red:hover {
-		background-color: #DA4F49;
-		border-color: rgba(0,0,0,0.5);
-		text-decoration: none;
-	}
+	background-color: darken($red, 2%);
+	text-decoration: none;
+}
 
 a.btn.btn-red:active {
-		background-color: #B32C24;
-		border-color: rgba(0,0,0,0.9);
-	}
+	background-color: darken($red, 5%);
+}
 
 
 
@@ -99,11 +80,15 @@ a.btn.btn-red:active {
 	text-align: center;
 }
 .btn-plus{
-	background-color: #5FDB9F;
-	font-size: 1.25em;
+	background-color: $green;
+	@include font-size(20);
 }
 .btn-plus:hover{
-	background-color: #03A05C;
+	background-color: darken($green, 2%);
+	text-decoration: none;
+}
+.btn-plus:active{
+	background-color: darken($green, 5%);
 	text-decoration: none;
 }
 
@@ -116,7 +101,7 @@ input[type="number"]{
 	border: none;
 	background-color: inherit;
 	color: $copy;
-	font-size: 1.25em;
+	@include font-size(20);
 	&:focus{
 		box-shadow: none;
 		outline: none;
