@@ -13,7 +13,15 @@ $(".btn-plus").on("click", function(e){
 
 	}
 
-   });
+});
+
+$(".btn-submit").on('click', function(e){
+
+	e.preventDefault();
+
+	$('.form form').submit();
+
+});
 
 });
 
