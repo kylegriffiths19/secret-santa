@@ -32,7 +32,7 @@
 	<meta name="msapplication-TileImage" content="">
 	<meta name="msapplication-TileColor" content="#222222">
 
-	<title>Welcome to 3Radical</title>
+	<title>The Idea Bureau - Secret Santa</title>
 
 	<!--
 	NOTE: Uncomment for iOS and favicons
@@ -68,29 +68,43 @@
 	<!--[if (lt IE 9) & (!IEMobile)]><script src="_assets/js/libs/selectivizr.min.js"></script><![endif]-->
 </head>
 <body>
-<body>
-	<!-- Hammer includes -->
-	  <!--[if lt IE 7]>
-      <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-  <![endif]-->
+	<div class="wrapper"><body>
+	
+	<div class="logo"><p>LOGO HERE</p></div>
+	<section role="main" class="form">
+		<form action="POST">
+			
+			<section class="row">
+				<input type="text" name="name" value="Your Name*" onblur="if(this.value == '') { this.value='Your Name*'}" onfocus="if (this.value == 'Your Name*') {this.value=''}">
+				<input type="text" name="email" value="Your Email*"  onblur="if(this.value == '') { this.value='Your Email*'}" onfocus="if (this.value == 'Your Email*') {this.value=''}">
+			</section>
 
-	<header role="banner">
-		<nav role="navigation">
-			<ul>
-				<li><a href="#" title="#"></a></li>
-				<li><a href="#" title="#"></a></li>
-				<li><a href="#" title="#"></a></li>
-				<li><a href="#" title="#"></a></li>
-				<li><a href="#" title="#"></a></li>
-			</ul>
-		</nav>
-	</header>
-	<section role="main">
+			<section class="row">
+				<input type="text" name="name" value="Your Name*" onblur="if(this.value == '') { this.value='Your Name*'}" onfocus="if (this.value == 'Your Name*') {this.value=''}">
+				<input type="text" name="email" value="Your Email*"  onblur="if(this.value == '') { this.value='Your Email*'}" onfocus="if (this.value == 'Your Email*') {this.value=''}">
+			</section>
 
+			<section class="row">
+				<input type="text" name="name" value="Your Name*" onblur="if(this.value == '') { this.value='Your Name*'}" onfocus="if (this.value == 'Your Name*') {this.value=''}">
+				<input type="text" name="email" value="Your Email*"  onblur="if(this.value == '') { this.value='Your Email*'}" onfocus="if (this.value == 'Your Email*') {this.value=''}">
+			</section>
+
+			<section class="row">			
+				<input type="text" name="name" value="Your Name*" onblur="if(this.value == '') { this.value='Your Name*'}" onfocus="if (this.value == 'Your Name*') {this.value=''}">
+				<input type="text" name="email" value="Your Email*"  onblur="if(this.value == '') { this.value='Your Email*'}" onfocus="if (this.value == 'Your Email*') {this.value=''}">
+			</section>	
+
+			<section class="row">
+				<input type="text" name="name" value="Your Name*" onblur="if(this.value == '') { this.value='Your Name*'}" onfocus="if (this.value == 'Your Name*') {this.value=''}">
+				<input type="text" name="email" value="Your Email*"  onblur="if(this.value == '') { this.value='Your Email*'}" onfocus="if (this.value == 'Your Email*') {this.value=''}">
+			</section>
+		</form>
 	</section>
 
 <!-- Hammer includes -->
+	<p>&copy;The Idea Bureau</p>
 
+	</div>
 	<!--
 	TODO: Check latest jQuery and Formalize.js
 	-->
