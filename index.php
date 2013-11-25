@@ -1,3 +1,60 @@
+<?php
+/**
+ * PHP Secret Santa
+ * A very simple PHP based Secret Santa Script.
+ *
+ * @Author Carl Saggs (2011)
+ * @license MIT License
+ */
+ 
+//Very very basic email validation (basically, does it contain an '@')
+function badEmailValidate($email){
+	if(strpos($email,'@') != false) return true;
+	return false;
+}
+//If valid data was sumbitted
+if($_POST['count'] && $_POST['count'] > 0){
+
+	$users = array();
+	//Proccess Form
+	for($c=0;$c<$_POST['count'];$c++){
+		//Ensure both username and email were provided (and that email is .. sorta... valid)
+		if(!empty($_POST['user_name_'.$c]) && !empty($_POST['user_email_'.$c]) && badEmailValidate($_POST['user_email_'.$c])){
+			$users[] = array(
+				'name'	=>	preg_replace('/[^a-zA-Z0-9]/i', "", $_POST['user_name_'.$c]),//Remove funny chars
+				'email'	=>	$_POST['user_email_'.$c]
+			);
+		}
+	}
+	//Ensure some people actually entered the Secret Santa
+	if(sizeof($users)<2) die("Only one valid user was detected. Please ensure you fill out the form fully.");
+	//Ensure we aren't going to send to many emails.
+	if(sizeof($users)>50) die("Sorry, but due to risk of spamming this script is limited on only allow secret santa's of up to 50 people.");
+	
+	//Get spend amount
+	$amount = (int) $_POST['amount'];
+	
+	//Get Secret Santa Class
+	require ('Santa-script.php');
+
+	//Create Object and set values
+	$santa = new SecretSanta();
+	$santa->setAmount($amount);
+	$santa->setTitle('Secret Santa');//Title of emails sent by tool
+	$santa->setFrom('The Idea Bureau','hello@theideabureau.co');//Address emails claim to be sent from.
+
+	//Run on $users, and show Success message on success
+	if($santa->run($users)){
+		echo 'Secret Santa emails have successfully been sent to the following email addresses:<br/>';
+		$sent = $santa->getSentEmails();
+		foreach($sent as $mail){
+			echo $mail.'<br/>';
+		}
+	}
+	die();
+}
+?>
+
 <!-- Hammer includes -->
 <!DOCTYPE html>
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
