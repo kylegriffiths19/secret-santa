@@ -8,3 +8,23 @@
 //	1. This file contains forms styles (can be used to override formalize.css)
 //
 //============================ */
+
+[placeholder]:focus::-webkit-input-placeholder {
+  transition: opacity 0.2s ease;
+  opacity: 0;
+}
+
+[placeholder]:focus:-moz-placeholder { /* Firefox 18- */
+	transition: opacity 0.2s ease;
+	opacity: 0;
+}
+
+[placeholder]:focus::-moz-placeholder {  /* Firefox 19+ */
+	transition: opacity 0.2s ease;
+	opacity: 0;
+}
+
+[placeholder]:focus:-ms-input-placeholder {
+	transition: opacity 0.2s ease;
+	opacity: 0;
+}

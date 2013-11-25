@@ -321,3 +321,20 @@ input[type=number]::-webkit-inner-spin-button:after {
  /* ==========================================
 	Page Specific
 ============================================*/
+[placeholder]:focus::-webkit-input-placeholder {
+  transition: opacity 0.2s ease;
+  opacity: 0; }
+
+[placeholder]:focus:-moz-placeholder {
+  /* Firefox 18- */
+  transition: opacity 0.2s ease;
+  opacity: 0; }
+
+[placeholder]:focus::-moz-placeholder {
+  /* Firefox 19+ */
+  transition: opacity 0.2s ease;
+  opacity: 0; }
+
+[placeholder]:focus:-ms-input-placeholder {
+  transition: opacity 0.2s ease;
+  opacity: 0; }
