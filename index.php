@@ -133,7 +133,7 @@ if($_POST['count'] && $_POST['count'] > 0){
 
 
 	<div role="main" class="form">
-		<form action="POST" name="mailing-list">
+		<form action="POST">
 
 			<section class="row">
 
@@ -177,7 +177,7 @@ if($_POST['count'] && $_POST['count'] > 0){
 
 		<section class="row">
 
-			<a href="#" class="btn btn-red">Let the magic happen</a>
+			<a href="#" class="btn btn-red btn-submit">Let the magic happen</a>
 
 		</section>
 
