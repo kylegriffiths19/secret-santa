@@ -15,8 +15,142 @@
 	Site Wide Components
 ============================================*/
 
+//general layout
+.row{
+	display: block;
+	width: 100%;
+	margin-bottom: 2em;
+	text-align: center;
+}
+
+//logo
+.title{
+	text-align: center;
+	margin: 2em 0em;
+}
 
 
+//form
+.form input[type="text"]{
+	width: 45%;
+	border: 0 none;
+	border-bottom: 1px solid $copy;
+	line-height: 1;
+	background-color: $bg;
+	color: $copy;
+	font-size: 1.25em;
+	&:focus{
+		outline: none;
+		box-shadow: none;
+		-webkit-box-shadow: none;
+		-moz-box-shadow: none;
+		-o-box-shadow: none;
+		-ms-box-shadow: none;
+	}
+	&:nth-of-type(odd){
+		margin-right: 9%;
+	}
+}
+
+
+
+
+//Submit Button
+a.btn {
+	@include body-font;
+	display: inline-block;
+	text-align: center;
+	color: $copy;
+	text-transform: uppercase;
+	letter-spacing: .125em;
+	font-size: .9em;
+	padding: .625em 1.875em;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 1px solid rgba(0,0,0,0.3);
+	border-bottom-width: 3px;
+	text-shadow: 0 1px 0 rgba(0,0,0,0.5);
+}
+
+a.btn.btn-red{
+	background-color: #E48681;
+}
+a.btn.btn-red:hover {
+		background-color: #DA4F49;
+		border-color: rgba(0,0,0,0.5);
+		text-decoration: none;
+	}
+
+a.btn.btn-red:active {
+		background-color: #B32C24;
+		border-color: rgba(0,0,0,0.9);
+	}
+
+
+
+
+
+
+
+//new rows button
+.row.add input{
+	width: 5%;
+	text-align: center;
+}
+.btn-plus{
+	background-color: #5FDB9F;
+	font-size: 1.25em;
+}
+.btn-plus:hover{
+	background-color: #03A05C;
+	text-decoration: none;
+}
+
+.plus-input{
+	width: 10%;
+	text-align: center;
+}
+
+input[type="number"]{
+	border: none;
+	background-color: inherit;
+	color: $copy;
+	font-size: 1.25em;
+	&:focus{
+		box-shadow: none;
+		outline: none;
+	}
+
+}
+
+input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+    cursor:pointer;
+    display:block;
+    width:8px;
+    color: $copy;
+    text-align:center;
+    position:relative;
+}
+
+input[type=number]::-webkit-inner-spin-button:before,
+input[type=number]::-webkit-inner-spin-button:after {
+    content: "^";
+    position:absolute;
+    right: 0;
+    font-family:monospace;
+    line-height:1;
+}
+
+input[type=number]::-webkit-inner-spin-button:before {
+    top:5px;
+}
+
+input[type=number]::-webkit-inner-spin-button:after {
+    bottom:0px;
+    -webkit-transform: rotate(180deg);
+}
 
  /* ==========================================
 	Page Specific

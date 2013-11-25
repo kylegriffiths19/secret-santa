@@ -32,7 +32,8 @@ html{
 	overflow-y:scroll;
 }
 body{
-    background-color: white;
+    background-color: $bg;
+    padding: .625em;
 }
 
 
@@ -40,6 +41,7 @@ body{
 	Links
 ============================================*/
 a{
+    @include body-font;
     text-decoration: none;
     -webkit-transition: all 0.1s linear;  /* Chrome 1-25, Safari 3.2+ */
     -moz-transition: all 0.1s linear;    /* Firefox 4-15 */
@@ -62,7 +64,7 @@ a{
     Paragraphs
 ============================================*/
 p {
-
+    @include body-font;
 }
 
 
@@ -75,6 +77,7 @@ p {
     Lists
 ============================================*/
 ul,ol{
+    @include body-font;
     margin: 0;
     padding: 0;
 
