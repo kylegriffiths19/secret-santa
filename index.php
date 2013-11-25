@@ -125,25 +125,37 @@ if($_POST['count'] && $_POST['count'] > 0){
 </head>
 <body>
 	<div class="wrapper">
-	<div class="title"><h1>Secret Santa</h1></div>
+	<div class="title">
+
+		<h1>Secret Santa</h1>
+
+	</div>
+
+
 	<div role="main" class="form">
-		<form action="POST">
+		<form action="POST" name="mailing-list">
 
 			<section class="row">
-				<input type="text" name="name" value="Your Name*" onblur="if(this.value == '') { this.value='Your Name*'}" onfocus="if (this.value == 'Your Name*') {this.value=''}">
-				<input type="text" name="email" value="Your Email*"  onblur="if(this.value == '') { this.value='Your Email*'}" onfocus="if (this.value == 'Your Email*') {this.value=''}">
+
+				<input type="text" name="name" placeholder="Name">
+
+				<input type="text" name="email" placeholder="Email">
 
 			</section>
 
 			<section class="row">
-				<input type="text" name="name" value="Your Name*" onblur="if(this.value == '') { this.value='Your Name*'}" onfocus="if (this.value == 'Your Name*') {this.value=''}">
-				<input type="text" name="email" value="Your Email*"  onblur="if(this.value == '') { this.value='Your Email*'}" onfocus="if (this.value == 'Your Email*') {this.value=''}">
+
+				<input type="text" name="name" placeholder="Name">
+
+				<input type="text" name="email" placeholder="Email">
 
 			</section>
 
 			<section class="row">
-				<input type="text" name="name" value="Your Name*" onblur="if(this.value == '') { this.value='Your Name*'}" onfocus="if (this.value == 'Your Name*') {this.value=''}">
-				<input type="text" name="email" value="Your Email*"  onblur="if(this.value == '') { this.value='Your Email*'}" onfocus="if (this.value == 'Your Email*') {this.value=''}">
+
+				<input type="text" name="name" placeholder="Name">
+
+				<input type="text" name="email" placeholder="Email">
 
 			</section>
 
@@ -151,15 +163,24 @@ if($_POST['count'] && $_POST['count'] > 0){
 
 	</div>
 
+
 	<div class="options">
+
 		<section class="row add">
+
 			<a href="#" class="btn btn-plus ss-icon">&#x002B;</a>
+
 			<input type="number" min="1" max="50" value="1" class="plus-input">
+
 		</section>
 
+
 		<section class="row">
+
 			<a href="#" class="btn btn-red">Let the magic happen</a>
+
 		</section>
+
 	</div>
 <!-- Hammer includes -->
 	<p>&copy; The Idea Bureau</p>
@@ -169,6 +190,7 @@ if($_POST['count'] && $_POST['count'] > 0){
 	TODO: Check latest jQuery and Formalize.js
 	-->
 
+	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 	<script src="_assets/js/libs/formalize.min.js"></script>
 	<script>window.jQuery || document.write('<script src="_assets/js/libs/jquery-1.10.1.min.js"><\/script>')</script>
