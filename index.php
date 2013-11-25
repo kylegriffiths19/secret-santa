@@ -28,8 +28,8 @@ if($_POST['count'] && $_POST['count'] > 0){
 	}
 	//Ensure some people actually entered the Secret Santa
 	if(sizeof($users)<2) die("Only one valid user was detected. Please ensure you fill out the form fully.");
-	//Ensure we aren't going to send to many emails.
-	if(sizeof($users)>50) die("Sorry, but due to risk of spamming this script is limited on only allow secret santa's of up to 50 people.");
+	//Ensure we aren't going to send too many emails.
+	if(sizeof($users)>50) die("Sorry, but due to risk of spamming, this script is limited to only Secret Santa's of up to 50 people.");
 
 	//Get spend amount
 	$amount = (int) $_POST['amount'];
