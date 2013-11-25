@@ -141,13 +141,7 @@ if($_POST['count'] && $_POST['count'] > 0){
 
 				<input type="text" name="email" placeholder="Email">
 
-			</section>
-
-			<section class="row">
-
-				<input type="text" name="name" placeholder="Name">
-
-				<input type="text" name="email" placeholder="Email">
+				<a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a>
 
 			</section>
 
@@ -156,6 +150,18 @@ if($_POST['count'] && $_POST['count'] > 0){
 				<input type="text" name="name" placeholder="Name">
 
 				<input type="text" name="email" placeholder="Email">
+
+				<a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a>
+
+			</section>
+
+			<section class="row">
+
+				<input type="text" name="name" placeholder="Name">
+
+				<input type="text" name="email" placeholder="Email">
+
+				<a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a>
 
 			</section>
 
