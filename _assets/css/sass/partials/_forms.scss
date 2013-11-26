@@ -28,3 +28,25 @@
 	transition: opacity 0.2s ease;
 	opacity: 0;
 }
+
+//form
+.form input[type="text"]{
+	width: 45%;
+	border: 0 none;
+	border-bottom: 1px solid $copy;
+	line-height: 1;
+	background-color: $bg;
+	color: $copy;
+	@include font-size(20);
+	&:focus{
+		outline: none;
+		box-shadow: none;
+		-webkit-box-shadow: none;
+		-moz-box-shadow: none;
+		-o-box-shadow: none;
+		-ms-box-shadow: none;
+	}
+	&:nth-of-type(odd){
+		margin-right: 9%;
+	}
+}

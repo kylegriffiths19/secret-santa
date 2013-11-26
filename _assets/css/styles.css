@@ -219,24 +219,6 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
   margin: 2em 0em; }
 
-.form input[type="text"] {
-  width: 45%;
-  border: 0 none;
-  border-bottom: 1px solid #e4e4e4;
-  line-height: 1;
-  background-color: #272727;
-  color: #e4e4e4;
-  font-size: 1.25em; }
-  .form input[type="text"]:focus {
-    outline: none;
-    box-shadow: none;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    -o-box-shadow: none;
-    -ms-box-shadow: none; }
-  .form input[type="text"]:nth-of-type(odd) {
-    margin-right: 9%; }
-
 a.btn {
   color: #e4e4e4;
   font-family: 'Droid Sans', sans-serif;
@@ -255,29 +237,37 @@ a.btn {
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-bottom-width: 3px;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5); }
+  a.btn:hover {
+    border-color: rgba(0, 0, 0, 0.5); }
+  a.btn:active {
+    border-bottom-width: 0;
+    border-color: rgba(0, 0, 0, 0.9); }
 
 a.btn.btn-red {
-  background-color: #E48681; }
+  background-color: #e48681; }
 
 a.btn.btn-red:hover {
-  background-color: #DA4F49;
-  border-color: rgba(0, 0, 0, 0.5);
+  background-color: #e27e79;
   text-decoration: none; }
 
 a.btn.btn-red:active {
-  background-color: #B32C24;
-  border-color: rgba(0, 0, 0, 0.9); }
+  background-color: #df726c; }
 
 .row.add input {
   width: 5%;
   text-align: center; }
 
 .btn-plus {
-  background-color: #5FDB9F;
-  font-size: 1.25em; }
+  background-color: #5fdb9f;
+  font-size: 20px;
+  font-size: 1.25rem; }
 
 .btn-plus:hover {
-  background-color: #03A05C;
+  background-color: #57d99a;
+  text-decoration: none; }
+
+.btn-plus:active {
+  background-color: #4ad693;
   text-decoration: none; }
 
 .plus-input {
@@ -288,7 +278,8 @@ input[type="number"] {
   border: none;
   background-color: inherit;
   color: #e4e4e4;
-  font-size: 1.25em; }
+  font-size: 20px;
+  font-size: 1.25rem; }
   input[type="number"]:focus {
     box-shadow: none;
     outline: none; }
@@ -337,3 +328,22 @@ input[type=number]::-webkit-inner-spin-button:after {
 [placeholder]:focus:-ms-input-placeholder {
   transition: opacity 0.2s ease;
   opacity: 0; }
+
+.form input[type="text"] {
+  width: 45%;
+  border: 0 none;
+  border-bottom: 1px solid #e4e4e4;
+  line-height: 1;
+  background-color: #272727;
+  color: #e4e4e4;
+  font-size: 20px;
+  font-size: 1.25rem; }
+  .form input[type="text"]:focus {
+    outline: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -o-box-shadow: none;
+    -ms-box-shadow: none; }
+  .form input[type="text"]:nth-of-type(odd) {
+    margin-right: 9%; }

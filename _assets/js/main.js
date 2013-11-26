@@ -1,5 +1,13 @@
 $(document).ready(function() {
 
+$(".btn-remove").on('click', function(e){
+
+	e.preventDefault();
+
+	$(this).parent(".row").remove();
+
+});
+
 
 $(".btn-plus").on("click", function(e){
 
@@ -9,7 +17,7 @@ $(".btn-plus").on("click", function(e){
 
 	for(var i = 0; i < count; i++) {
 
-		$('<section class="row"><input type="text" name="name" placeholder="Name"><input type="text" name="email" placeholder="Email"></section>').appendTo(".form form");
+		$('<section class="row"><input type="text" name="name" placeholder="Name"><input type="text" name="email" placeholder="Email"><a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a></section>').appendTo(".form form");
 
 	}
 
