@@ -33,7 +33,7 @@
 .form input[type="text"]{
 	width: 45%;
 	border: 0 none;
-	border-bottom: 1px solid $copy;
+	border-bottom: 2.5px solid $copy;
 	line-height: 1;
 	background-color: $bg;
 	color: $copy;
@@ -49,4 +49,14 @@
 	&:nth-of-type(odd){
 		margin-right: 9%;
 	}
+}
+
+.border{
+	border-bottom: 2.5px solid $copy;
+}
+.success{
+	border-bottom: 2.5px solid #57D99A;
+}
+.error{
+	border-bottom:2.5px solid #E48681;
 }

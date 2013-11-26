@@ -98,27 +98,27 @@ Class SecretSanta {
 	private function assign_users($users_array){
 		//$users = array(array())
 		$givers     = $users_array;
-		$receavers  = $users_array;
+		$receivers  = $users_array;
 		//Foreach giver
 		foreach($givers as $uid => $user){
 			$not_assigned = true;
 			//While a user hasn't been assigned their secret santa
 			while($not_assigned){
 				//Randomly pick a person for the user to buy for
-				$choice = rand(0, sizeof($receavers)-1);
+				$choice = rand(0, sizeof($receivers)-1);
 				//If randomly picked user is NOT themselves
-				if($user['email'] !== $receavers[$choice]['email']){
+				if($user['email'] !== $receivers[$choice]['email']){
 					//Assign the user the randomly picked user
-					$givers[$uid]['giving_to'] = $receavers[$choice];
+					$givers[$uid]['giving_to'] = $receivers[$choice];
 					//And remove them from the list
-					unset($receavers[$choice]);
+					unset($receivers[$choice]);
 					//Correct array
-					$receavers = array_values($receavers);
+					$receivers = array_values($receivers);
 					//exit loop
 					$not_assigned = false;
 				}else{
-					//If we are the laster user left and have been given ourselfs
-					if(sizeof($receavers) == 1){
+					//If we are the last user left and have been given ourselves
+					if(sizeof($receivers) == 1){
 						//Swap with someone else (in this case the first guy who got assigned.
 						//Steal first persons, person and give self to them.
 						$givers[$uid]['giving_to'] = $givers[0]['giving_to'];
