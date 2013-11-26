@@ -19,10 +19,10 @@ if($_POST['count'] && $_POST['count'] > 0){
 	//Proccess Form
 	for($c=0;$c<$_POST['count'];$c++){
 		//Ensure both username and email were provided (and that email is .. sorta... valid)
-		if(!empty($_POST['user_name_'.$c]) && !empty($_POST['user_email_'.$c]) && badEmailValidate($_POST['user_email_'.$c])){
+		if(!empty($_POST['name']) && !empty($_POST['email']) && badEmailValidate($_POST['email'])){
 			$users[] = array(
-				'name'	=>	preg_replace('/[^a-zA-Z0-9]/i', "", $_POST['user_name_'.$c]),//Remove funny chars
-				'email'	=>	$_POST['user_email_'.$c]
+				'name'	=>	preg_replace('/[^a-zA-Z0-9]/i', "", $_POST['name']),//Remove funny chars
+				'email'	=>	$_POST['email']
 			);
 		}
 	}
@@ -41,7 +41,7 @@ if($_POST['count'] && $_POST['count'] > 0){
 	$santa = new SecretSanta();
 	$santa->setAmount($amount);
 	$santa->setTitle('Secret Santa');//Title of emails sent by tool
-	$santa->setFrom('The Idea Bureau','hello@theideabureau.co');//Address emails claim to be sent from.
+	$santa->setFrom('Test','kylegriff19@gmail.com');//Address emails claim to be sent from.
 
 	//Run on $users, and show Success message on success
 	if($santa->run($users)){
@@ -133,13 +133,13 @@ if($_POST['count'] && $_POST['count'] > 0){
 
 
 	<div role="main" class="form">
-		<form action="POST">
+		<form method="POST" action="Santa-script.php">
 
 			<section class="row">
 
-				<input type="text" name="name" placeholder="Name">
+				<input type="text" name="name" placeholder="Name" class="required border" required>
 
-				<input type="text" name="email" placeholder="Email">
+				<input type="text" name="email" placeholder="Email" class="required border" required>
 
 				<a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a>
 
@@ -147,9 +147,9 @@ if($_POST['count'] && $_POST['count'] > 0){
 
 			<section class="row">
 
-				<input type="text" name="name" placeholder="Name">
+				<input type="text" name="name" placeholder="Name" class="required border" required>
 
-				<input type="text" name="email" placeholder="Email">
+				<input type="text" name="email" placeholder="Email" class="required border" required>
 
 				<a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a>
 
@@ -157,14 +157,15 @@ if($_POST['count'] && $_POST['count'] > 0){
 
 			<section class="row">
 
-				<input type="text" name="name" placeholder="Name">
+				<input type="text" name="name" placeholder="Name" class="required border" required>
 
-				<input type="text" name="email" placeholder="Email">
+				<input type="text" name="email" placeholder="Email" class="required border" required>
 
 				<a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a>
 
 			</section>
-
+			
+			<input type='hidden' id='count' name='count' value='0' />
 		</form>
 
 	</div>

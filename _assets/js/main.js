@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+
+//remove rows
 $("form").on("click", ".row .btn-remove", function(e){
 
 	e.preventDefault();
@@ -9,6 +11,7 @@ $("form").on("click", ".row .btn-remove", function(e){
 });
 
 
+//add rows
 $(".btn-plus").on("click", function(e){
 
 	e.preventDefault();
@@ -24,7 +27,7 @@ $(".btn-plus").on("click", function(e){
 });
 
 
-
+//submit form
 $(".btn-submit").on('click', function(e){
 
 	e.preventDefault();
@@ -32,6 +35,47 @@ $(".btn-submit").on('click', function(e){
 	$('.form form').submit();
 
 });
+
+//client-side validation
+var $submit = $(".btn-submit");
+var $required = $(".required");
+
+        function containsBlanks(){
+            var blanks = $required.map(function(){
+                 return $(this).val() == "";
+            });
+            return $.inArray(true, blanks) != -1;
+        }
+
+
+        function validEmail(email) {
+            return email.indexOf("@") != -1;
+        }
+
+        function requiredFilledIn(){
+            if(containsBlanks() || !validEmail($(".row input[type='text']:odd").val())) $submit.attr("disabled","disabled");
+            else $submit.removeAttr("disabled");
+        };
+
+
+        $("input[type='text']").keyup(function(){
+            //check required fields
+            requiredFilledIn();
+        });
+
+        $(".row input[type='text']:odd").keyup(function(){
+            //check email
+            if(validEmail($(this).val()))
+                $(this).css({"border-bottom":"2.5px solid #57D99A"}).prev().css({"border-bottom":"2.5px solid #57D99A"});
+            else
+                $(this).css({"border-bottom":"2.5px solid #E48681"});
+        });
+
+ 
+
+
+        //$(".row input[type='text']:odd").blur().css({"border-bottom":"2.5px solid #FFF"});
+        
 
 });
 

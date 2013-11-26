@@ -332,7 +332,7 @@ input[type=number]::-webkit-inner-spin-button:after {
 .form input[type="text"] {
   width: 45%;
   border: 0 none;
-  border-bottom: 1px solid #e4e4e4;
+  border-bottom: 2.5px solid #e4e4e4;
   line-height: 1;
   background-color: #272727;
   color: #e4e4e4;
@@ -347,3 +347,12 @@ input[type=number]::-webkit-inner-spin-button:after {
     -ms-box-shadow: none; }
   .form input[type="text"]:nth-of-type(odd) {
     margin-right: 9%; }
+
+.border {
+  border-bottom: 2.5px solid #e4e4e4; }
+
+.success {
+  border-bottom: 2.5px solid #57D99A; }
+
+.error {
+  border-bottom: 2.5px solid #E48681; }
