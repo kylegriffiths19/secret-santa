@@ -1,10 +1,10 @@
 $(document).ready(function() {
 
-$(".btn-remove").on('click', function(e){
+$("form").on("click", ".row .btn-remove", function(e){
 
 	e.preventDefault();
 
-	$(this).parent(".row").remove();
+	$(this).parent().remove();
 
 });
 
@@ -22,6 +22,8 @@ $(".btn-plus").on("click", function(e){
 	}
 
 });
+
+
 
 $(".btn-submit").on('click', function(e){
 
