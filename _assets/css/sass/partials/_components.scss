@@ -26,7 +26,7 @@
 //logo
 .title{
 	text-align: center;
-	margin: 2em 0em;
+	margin: 2.5em 0em;
 }
 
 //Submit Button
@@ -135,6 +135,18 @@ input[type=number]::-webkit-inner-spin-button:before {
 input[type=number]::-webkit-inner-spin-button:after {
     bottom:0px;
     -webkit-transform: rotate(180deg);
+}
+
+
+//options
+.options{
+	margin-top: 3.25em;
+}
+
+//footer
+.footer p{
+	border-top: 2.5px solid #E4E4E4;
+	padding-top: 1.25em;
 }
 
  /* ==========================================

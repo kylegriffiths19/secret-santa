@@ -133,33 +133,33 @@ if($_POST['count'] && $_POST['count'] > 0){
 
 
 	<div role="main" class="form">
-		<form method="POST" action="Santa-script.php">
+		<form method="POST" action="">
 
-			<section class="row">
+			<section class="row input">
 
-				<input type="text" name="name" placeholder="Name" class="required border" required>
+				<input type="text" name="name[]" placeholder="Name" class="required border" required>
 
-				<input type="text" name="email" placeholder="Email" class="required border" required>
-
-				<a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a>
-
-			</section>
-
-			<section class="row">
-
-				<input type="text" name="name" placeholder="Name" class="required border" required>
-
-				<input type="text" name="email" placeholder="Email" class="required border" required>
+				<input type="text" name="email[]" placeholder="Email" class="required border" required>
 
 				<a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a>
 
 			</section>
 
-			<section class="row">
+			<section class="row input">
 
-				<input type="text" name="name" placeholder="Name" class="required border" required>
+				<input type="text" name="name[]" placeholder="Name" class="required border" required>
 
-				<input type="text" name="email" placeholder="Email" class="required border" required>
+				<input type="text" name="email[]" placeholder="Email" class="required border" required>
+
+				<a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a>
+
+			</section>
+
+			<section class="row input">
+
+				<input type="text" name="name[]" placeholder="Name" class="required border" required>
+
+				<input type="text" name="email[]" placeholder="Email" class="required border" required>
 
 				<a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a>
 
@@ -184,14 +184,15 @@ if($_POST['count'] && $_POST['count'] > 0){
 
 		<section class="row">
 
-			<a href="#" class="btn btn-red btn-submit">Let the magic happen</a>
+			<a href="#" class="btn btn-red btn-submit disabled">Let the magic happen</a>
 
 		</section>
 
 	</div>
 <!-- Hammer includes -->
-	<p>&copy; The Idea Bureau</p>
-
+	<section class="footer">
+		<p>&copy; The Idea Bureau</p>
+	</section>
 	</div>
 	<!--
 	TODO: Check latest jQuery and Formalize.js

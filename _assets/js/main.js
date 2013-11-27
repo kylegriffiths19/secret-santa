@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
 
+
 //remove rows
 $("form").on("click", ".row .btn-remove", function(e){
 
@@ -17,13 +18,12 @@ $(".btn-plus").on("click", function(e){
 	e.preventDefault();
 
 	var count = $(".plus-input").val();
-
+   
 	for(var i = 0; i < count; i++) {
-
-		$('<section class="row"><input type="text" name="name" placeholder="Name"><input type="text" name="email" placeholder="Email"><a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a></section>').appendTo(".form form");
+        
+		$('<section class="row"><input type="text" name="name[]" placeholder="Name"><input type="text" name="email[]" placeholder="Email"><a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a></section>').appendTo(".form form");
 
 	}
-
 });
 
 
@@ -53,8 +53,9 @@ var $required = $(".required");
         }
 
         function requiredFilledIn(){
-            if(containsBlanks() || !validEmail($(".row input[type='text']:odd").val())) $submit.attr("disabled","disabled");
-            else $submit.removeAttr("disabled");
+            if(containsBlanks() || !validEmail($(".row input[type='text']:odd").val()) && $(".btn-submit").hasClass("disabled")) 
+				return false;
+            else $(".btn-submit").unbind("click", false);
         };
 
 
@@ -70,6 +71,8 @@ var $required = $(".required");
             else
                 $(this).css({"border-bottom":"2.5px solid #E48681"}).prev().css({"border-bottom":"2.5px solid #E48681"});
         });
+
+
 
  
 
