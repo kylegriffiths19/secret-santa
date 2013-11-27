@@ -6,7 +6,7 @@
  * @Author Carl Saggs (2011)
  * @license MIT License
  */
-
+ 
 //Very very basic email validation (basically, does it contain an '@')
 function badEmailValidate($email){
 	if(strpos($email,'@') != false) return true;
@@ -19,29 +19,29 @@ if($_POST['count'] && $_POST['count'] > 0){
 	//Proccess Form
 	for($c=0;$c<$_POST['count'];$c++){
 		//Ensure both username and email were provided (and that email is .. sorta... valid)
-		if(!empty($_POST['name']) && !empty($_POST['email']) && badEmailValidate($_POST['email'])){
+		if(!empty($_POST['name_'.$c]) && !empty($_POST['email_'.$c]) && badEmailValidate($_POST['email_'.$c])){
 			$users[] = array(
-				'name'	=>	preg_replace('/[^a-zA-Z0-9]/i', "", $_POST['name']),//Remove funny chars
-				'email'	=>	$_POST['email']
+				'name'	=>	preg_replace('/[^a-zA-Z0-9]/i', "", $_POST['name_'.$c]),//Remove funny chars
+				'email'	=>	$_POST['email_'.$c]
 			);
 		}
 	}
 	//Ensure some people actually entered the Secret Santa
 	if(sizeof($users)<2) die("Only one valid user was detected. Please ensure you fill out the form fully.");
-	//Ensure we aren't going to send too many emails.
-	if(sizeof($users)>50) die("Sorry, but due to risk of spamming, this script is limited to only Secret Santa's of up to 50 people.");
-
+	//Ensure we aren't going to send to many emails.
+	if(sizeof($users)>50) die("Sorry, but due to risk of spamming this script is limited on only allow secret santa's of up to 50 people.");
+	
 	//Get spend amount
 	$amount = (int) $_POST['amount'];
-
+	
 	//Get Secret Santa Class
-	require ('Santa-script.php');
+	require ('Santa_script.php');
 
 	//Create Object and set values
 	$santa = new SecretSanta();
 	$santa->setAmount($amount);
 	$santa->setTitle('Secret Santa');//Title of emails sent by tool
-	$santa->setFrom('Test','kylegriff19@gmail.com');//Address emails claim to be sent from.
+	$santa->setFrom('Santa test','kylegriff19@gmail.com');//Address emails claim to be sent from.
 
 	//Run on $users, and show Success message on success
 	if($santa->run($users)){
@@ -54,7 +54,6 @@ if($_POST['count'] && $_POST['count'] > 0){
 	die();
 }
 ?>
-
 <!-- Hammer includes -->
 <!-- @include _components/_header.kit -->
 
@@ -70,19 +69,9 @@ if($_POST['count'] && $_POST['count'] > 0){
 
 			<section class="row input">
 
-				<input type="text" name="name[]" placeholder="Name" class="required border" required>
+				<input type="text" name="name_0" placeholder="Name" class="required border" required>
 
-				<input type="text" name="email[]" placeholder="Email" class="required border" required>
-
-				<a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a>
-
-			</section>
-
-			<section class="row input">
-
-				<input type="text" name="name[]" placeholder="Name" class="required border" required>
-
-				<input type="text" name="email[]" placeholder="Email" class="required border" required>
+				<input type="text" name="email_0" placeholder="Email" class="required border" required>
 
 				<a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a>
 
@@ -90,9 +79,19 @@ if($_POST['count'] && $_POST['count'] > 0){
 
 			<section class="row input">
 
-				<input type="text" name="name[]" placeholder="Name" class="required border" required>
+				<input type="text" name="name_1" placeholder="Name" class="required border" required>
 
-				<input type="text" name="email[]" placeholder="Email" class="required border" required>
+				<input type="text" name="email_1" placeholder="Email" class="required border" required>
+
+				<a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a>
+
+			</section>
+
+			<section class="row input">
+
+				<input type="text" name="name_2" placeholder="Name" class="required border" required>
+
+				<input type="text" name="email_2" placeholder="Email" class="required border" required>
 
 				<a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a>
 
@@ -111,7 +110,11 @@ if($_POST['count'] && $_POST['count'] > 0){
 			<a href="#" class="btn btn-plus ss-icon">&#x002B;</a>
 
 			<input type="number" min="1" max="50" value="1" class="plus-input">
-
+			
+			<article class="budget">
+				<p>Set Budget Amount(£): </p>
+				<input type="number" id="budget" min="5" max="50" step="5" value="5">
+			</article>
 		</section>
 
 
