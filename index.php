@@ -1,58 +1,75 @@
 <?php
-/**
- * PHP Secret Santa
- * A very simple PHP based Secret Santa Script.
- *
- * @Author Carl Saggs (2011)
- * @license MIT License
- */
- 
-//Very very basic email validation (basically, does it contain an '@')
-function badEmailValidate($email){
-	if(strpos($email,'@') != false) return true;
-	return false;
-}
-//If valid data was sumbitted
-if($_POST['count'] && $_POST['count'] > 0){
 
-	$users = array();
-	//Proccess Form
-	for($c=0;$c<$_POST['count'];$c++){
-		//Ensure both username and email were provided (and that email is .. sorta... valid)
-		if(!empty($_POST['name_'.$c]) && !empty($_POST['email_'.$c]) && badEmailValidate($_POST['email_'.$c])){
-			$users[] = array(
-				'name'	=>	preg_replace('/[^a-zA-Z0-9]/i', "", $_POST['name_'.$c]),//Remove funny chars
-				'email'	=>	$_POST['email_'.$c]
-			);
-		}
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
+
+	function isValidEmail($email) {
+		return strpos($email, "@") !== false;
 	}
-	//Ensure some people actually entered the Secret Santa
-	if(sizeof($users)<2) die("Only one valid user was detected. Please ensure you fill out the form fully.");
-	//Ensure we aren't going to send to many emails.
-	if(sizeof($users)>50) die("Sorry, but due to risk of spamming this script is limited on only allow secret santa's of up to 50 people.");
-	
-	//Get spend amount
-	$amount = (int) $_POST['amount'];
-	
-	//Get Secret Santa Class
-	require ('Santa_script.php');
 
-	//Create Object and set values
-	$santa = new SecretSanta();
-	$santa->setAmount($amount);
-	$santa->setTitle('Secret Santa');//Title of emails sent by tool
-	$santa->setFrom('Santa test','kylegriff19@gmail.com');//Address emails claim to be sent from.
+	$name = $_POST['name'];//array of names
+	$email = $_POST['email'];//array of emails
 
-	//Run on $users, and show Success message on success
-	if($santa->run($users)){
-		echo 'Secret Santa emails have successfully been sent to the following email addresses:<br/>';
-		$sent = $santa->getSentEmails();
-		foreach($sent as $mail){
-			echo $mail.'<br/>';
-		}
+	$users = array_combine($name, $email); //becomes users array('name' => 'email')
+	
+	$giver = $users; //assign users array to both givers and recievers
+	$receiver = $users;
+
+	//get spend amount
+	$amount = $_POST['amount'];
+	shuffle($giver); //shuffles the arrays
+	shuffle($receiver);
+	//iterate through the giver array for the individuals. 
+	foreach ($giver as $g) { 
+	//Make sure that the giver and the receiver are not the same person 
+		while ($receiver[0] == $g) { 
+		//Shuffle the array to randomize it. 
+			shuffle($receiver); }
+
+			//Grab the first person off the receiver array 
+			$r = $receiver[0]; 
+			
+			//test
+			//echo $g . "gives to " . $r . " ";
+			//foreach ($g as $key => $value) {
+				//$name = $key;
+			//}
+
+			
+			
+			if(isValidEmail($g)){
+				$mail_from = "secretsanta.com";
+				$mail_title = "Secret Santa";
+				$email_body = "Hello $g, 
+						For Secret Santa this year you will be buying a present for, {$r} 
+						Presents should all be around £$amount,
+
+						Good luck and Merry Christmas,
+						Santa
+						". "\n"; 
+
+						//Send em via normal PHP mail method
+						if(mail($g, $mail_title, $email_body, "From: {$mail_from}\r\n")){
+							echo "success";
+						} else{
+							echo "error";
+						}
+			}
+
+
+			
+
+			
+				
+			
+
+			//Remove that first person from the array, so we only have ungifted people remaining. 
+			$receiver = array_slice($receiver,1);	
 	}
-	die();
+
 }
+
+
+
 ?>
 <!-- Hammer includes -->
 <!DOCTYPE html>
@@ -133,12 +150,14 @@ if($_POST['count'] && $_POST['count'] > 0){
 
 	<div role="main" class="form">
 		<form method="POST" action="">
-
+			<input type='hidden' id='budget_amount' name='amount' value='' />
+			<input type="hidden" name="hidden_submit" id="hidden_submit">
+			<input type="hidden" name="count" value="">
 			<section class="row input">
 
-				<input type="text" name="name_0" placeholder="Name" class="required border" required>
+				<input type="text" name="name[]" placeholder="Name" class="required border" required>
 
-				<input type="text" name="email_0" placeholder="Email" class="required border" required>
+				<input type="text" name="email[]" placeholder="Email" class="required border" required>
 
 				<a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a>
 
@@ -146,9 +165,9 @@ if($_POST['count'] && $_POST['count'] > 0){
 
 			<section class="row input">
 
-				<input type="text" name="name_1" placeholder="Name" class="required border" required>
+				<input type="text" name="name[]" placeholder="Name" class="required border" required>
 
-				<input type="text" name="email_1" placeholder="Email" class="required border" required>
+				<input type="text" name="email[]" placeholder="Email" class="required border" required>
 
 				<a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a>
 
@@ -156,15 +175,13 @@ if($_POST['count'] && $_POST['count'] > 0){
 
 			<section class="row input">
 
-				<input type="text" name="name_2" placeholder="Name" class="required border" required>
+				<input type="text" name="name[]" placeholder="Name" class="required border" required>
 
-				<input type="text" name="email_2" placeholder="Email" class="required border" required>
+				<input type="text" name="email[]" placeholder="Email" class="required border" required>
 
 				<a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a>
 
-			</section>
-			
-			<input type='hidden' id='count' name='count' value='0' />
+			</section>	
 		</form>
 
 	</div>
@@ -178,16 +195,19 @@ if($_POST['count'] && $_POST['count'] > 0){
 
 			<input type="number" min="1" max="50" value="1" class="plus-input">
 			
-			<article class="budget">
-				<p>Set Budget Amount(£): </p>
-				<input type="number" id="budget" min="5" max="50" step="5" value="5">
-			</article>
+			
 		</section>
 
+		<section class="row budget">
+			
+				<p>Set budget amount</p>
+				<span class="pound">&pound;</span><input type="number" id="budget" name="budget" min="5" max="50" step="5" value="5">
+			
+		</section>
 
 		<section class="row">
 
-			<a href="#" class="btn btn-red btn-submit disabled">Let the magic happen</a>
+			<a href="#" class="btn btn-red btn-submit">Let the magic happen</a>
 
 		</section>
 

@@ -286,11 +286,12 @@ input[type="number"] {
 
 input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   cursor: pointer;
   display: block;
   width: 8px;
   color: #e4e4e4;
-  text-align: center;
   position: relative; }
 
 input[type=number]::-webkit-inner-spin-button:before,
@@ -306,13 +307,23 @@ input[type=number]::-webkit-inner-spin-button:before {
 
 input[type=number]::-webkit-inner-spin-button:after {
   bottom: 0px;
-  -webkit-transform: rotate(180deg); }
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg); }
 
 .options {
   margin-top: 3.25em; }
 
 .budget {
-  margin: 2.25em auto; }
+  margin: 2.25em auto;
+  text-align: center; }
+
+span.pound {
+  color: #e4e4e4;
+  font-size: 1.5em;
+  margin-right: 1em; }
 
 .footer p {
   border-top: 2.5px solid #E4E4E4;

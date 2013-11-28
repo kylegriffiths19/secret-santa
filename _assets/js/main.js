@@ -19,13 +19,23 @@ $(".btn-plus").on("click", function(e){
 	e.preventDefault();
 
     var count = $(".plus-input").val();
-    var name_counter = $(".row.input").length;
+    //var name_counter = $(".row.input").length;
+
+    //$("input[type='hidden'][name='count']").val(name_counter);
 
 	for(var i = 0; i < count; i++) {
-        name_counter++;
-		$('<section class="row input"><input type="text" name="name_'+name_counter+'" placeholder="Name"><input type="text" name="email[]" placeholder="Email"><a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a></section>').appendTo(".form form");
+        //name_counter++;
+		$('<section class="row input"><input type="text" name="name[]" placeholder="Name"><input type="text" name="email[]" placeholder="Email"><a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a></section>').appendTo(".form form");
 	}
 });
+
+
+//set budget
+    $("#budget_amount").on("change", function(){
+        alert("test");
+        var current_amount = $("#budget").val();
+        $(this).val(current_amount);
+    })
 
 
 //submit form
@@ -58,6 +68,22 @@ var $required = $(".required");
 				return false;
             else $(".btn-submit").unbind("click", false);
         };
+
+        //dont allow names to be exactly the same
+        function checkDuplicates(){
+            $('input[name^="text"]').change(function() {
+
+            var $current = $(this);
+
+            $('input[name^="text"]').each(function() {
+                if ($(this).val() == $current.val() && $(this).attr('id') != $current.attr('id'))
+                {
+                    alert('duplicate found!');
+                }
+
+            });
+          });
+        }
 
 
         $("form").on("keyup", "input[type='text']", function(){
