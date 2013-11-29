@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
 		shuffle_assoc($giver); //shuffles the arrays
-		shuffle($receiver);
+		shuffle_assoc($receiver);
 
 
 
@@ -58,8 +58,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 					$mail_title = "Secret Santa";
 					$email_body = "Hello {$giver_name}
 
-							For Secret Santa this year you will be buying a present for {$reciever} 
-							Presents should all be around £$amount,
+							For Secret Santa this year you will be buying a present for" . key($receiver) .
+							"Presents should all be around £$amount,
 
 							Good luck and Merry Christmas,
 							Santa
