@@ -6,16 +6,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 		return strpos($email, "@") !== false;
 	}
 
-	$name = $_POST['name'];//array of names
-	$email = $_POST['email'];//array of emails
+	if (isset($_POST['hidden_submit'])) {
+		$name = $_POST['name'];//array of names
+		$email = $_POST['email'];//array of emails
+		//get spend amount
+		$amount = $_POST['amount'];
+	}
 
 	$users = array_combine($name, $email); //becomes users array('name' => 'email')
 	
 	$giver = $users; //assign users array to both givers and recievers
 	$receiver = $users;
 
-	//get spend amount
-	$amount = $_POST['amount'];
+	
 	shuffle($giver); //shuffles the arrays
 	shuffle($receiver);
 	//iterate through the giver array for the individuals. 
@@ -28,18 +31,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 			//Grab the first person off the receiver array 
 			$r = $receiver[0]; 
 			
+			
 			//test
 			//echo $g . "gives to " . $r . " ";
-			//foreach ($g as $key => $value) {
-				//$name = $key;
-			//}
-
-			
-			
+				
 			if(isValidEmail($g)){
+				$key = array_keys($g);
 				$mail_from = "secretsanta.com";
 				$mail_title = "Secret Santa";
-				$email_body = "Hello $g, 
+				$email_body = "Hello {$key} {$g}, 
 						For Secret Santa this year you will be buying a present for, {$r} 
 						Presents should all be around £$amount,
 
@@ -47,24 +47,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 						Santa
 						". "\n"; 
 
+						echo $email_body;
+						
 						//Send em via normal PHP mail method
-						if(mail($g, $mail_title, $email_body, "From: {$mail_from}\r\n")){
+						/*if(mail($g, $mail_title, $email_body, "From: {$mail_from}\r\n")){
 							echo "success";
 						} else{
 							echo "error";
-						}
+						}*/
 			}
-
-
-			
-
-			
-				
-			
 
 			//Remove that first person from the array, so we only have ungifted people remaining. 
 			$receiver = array_slice($receiver,1);	
 	}
+
+	//Ensure some people actually entered the Secret Santa
+	if(sizeof($users)<2) die("Only one valid user was detected. Please ensure you fill out the form fully.");
+	//Ensure we aren't going to send to many emails.
+	if(sizeof($users)>50) die("Sorry, but due to risk of spamming this script is limited on only allow secret santa's of up to 50 people.");
 
 }
 
