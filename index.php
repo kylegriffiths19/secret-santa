@@ -12,6 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $keys = array_keys($array);
 
         shuffle($keys);
+        shuffle($keys);
 
         foreach($keys as $key) {
             $new[$key] = $array[$key];
@@ -25,16 +26,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 	if (isset($_POST['hidden_submit'])) {
 		$name = $_POST['name'];//array of names
 		$email = $_POST['email'];//array of emails
+
+		if ($name === ""){
+			echo "error fields are empty";
+		}
 		//get spend amount
 		$amount = $_POST['amount'];
 		$users = array_combine($name, $email); //becomes users array('name' => 'email')
 		$giver = $users; //assign users array to both givers and recievers
 		$receiver = $users;
+
+
 		
 
 
-		shuffle_assoc($giver); //shuffles the arrays
-		shuffle_assoc($receiver);
+		shuffle_assoc($giver); //shuffles the givers
+		shuffle_assoc($receiver); //shuffles the receievers
 
 
 
@@ -42,12 +49,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 		//iterate through the giver array for the individuals. 
 		foreach ($giver as $giver_name => $email) { 
 		//Make sure that the giver and the receiver are not the same person 
-			while ($receiver[0] == $email) { 
+			while (current($receiver) == $email) { 
 			//Shuffle the array to randomize it. 
 				shuffle_assoc($receiver); }
 
 				//Grab the first person off the receiver array 
-				$r = $receiver[0];
+				$r = reset($receiver);
 
 				//test
 				//echo $g . "gives to " . $r . " ";
@@ -56,38 +63,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 					
 					$mail_from = "secretsanta.com";
 					$mail_title = "Secret Santa";
-					$email_body = "Hello {$giver_name}
+					$email_body = "Hello {$giver_name}," . " " . 
 
-							For Secret Santa this year you will be buying a present for" . key($receiver) .
+							"For Secret Santa this year you will be buying a present for" . " " . key($receiver) . " " .
 							"Presents should all be around £$amount,
 
 							Good luck and Merry Christmas,
 							Santa
-							". "\n"; 
-					echo $email_body;
+							". "\n";
 							
 							//Send em via normal PHP mail method
-							/*if(mail($g, $mail_title, $email_body, "From: {$mail_from}\r\n")){
-								echo "success";
+							if(mail($email, $mail_title, $email_body, "From: {$mail_from}\r\n")){
+								header("Location: success.php");
 							} else{
-								echo "error";
-							}*/
-				} else{
-					echo "Sorry an Invalid Email was provided";
-				}
+								echo "error emails failed to send";
+							}
+				} 
 
 				//Remove that first person from the array, so we only have ungifted people remaining. 
-				$receiver = array_slice($receiver,1);	
-				
-		}
+				$receiver = array_slice($receiver,1);
+		}	
 	}
-
-		//Ensure some people actually entered the Secret Santa
-		if(count($_POST['name'])<2) die("Only one valid user was detected. Please ensure you fill out the form fully.");
-		//Ensure we aren't going to send to many emails.
-		if(count($_POST['name'])>50) die("Sorry, but due to risk of spamming this script is limited on only allow secret santa's of up to 50 people.");
-
-	}
+}
 
 
 
@@ -170,25 +167,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
 	<div role="main" class="form">
-		<form method="POST" action="">
+		<form method="POST" action="" id="santaForm">
 			<input type='hidden' id='budget_amount' name='amount' value='5' />
 			<input type="hidden" name="hidden_submit" id="hidden_submit">
 			<input type="hidden" name="count" value="">
 			<section class="row input">
 
-				<input type="text" name="name[]" placeholder="Name" class="required border" required>
+				<input type="text" name="name[]" placeholder="Name" class="border" maxlength="10" required>
 
-				<input type="text" name="email[]" placeholder="Email" class="required border" required>
-
-				<a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a>
-
-			</section>
-
-			<section class="row input">
-
-				<input type="text" name="name[]" placeholder="Name" class="required border" required>
-
-				<input type="text" name="email[]" placeholder="Email" class="required border" required>
+				<input type="email" name="email[]" placeholder="Email" class="border" required>
 
 				<a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a>
 
@@ -196,14 +183,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
 			<section class="row input">
 
-				<input type="text" name="name[]" placeholder="Name" class="required border" required>
+				<input type="text" name="name[]" placeholder="Name" class="border" maxlength="10" required>
 
-				<input type="text" name="email[]" placeholder="Email" class="required border" required>
+				<input type="email" name="email[]" placeholder="Email" class="border" required>
+
+				<a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a>
+
+			</section>
+
+			<section class="row input">
+
+				<input type="text" name="name[]" placeholder="Name" class="border" maxlength="10" required>
+
+				<input type="email" name="email[]" placeholder="Email" class="border" required>
 
 				<a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a>
 
 			</section>	
-		</form>
+		
 
 	</div>
 
@@ -214,12 +211,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
 			<a href="#" class="btn btn-plus ss-icon">&#x002B;</a>
 
-			<input type="number" min="1" max="50" value="1" class="plus-input">
+			<input type="number" min="1" max="50" value="1" class="plus-input center">
 			
 			
 		</section>
 
-		<section class="row budget">
+		<section class="row budget center">
 			
 				<p>Set budget amount</p>
 				<span class="pound">&pound;</span><input type="number" id="budget" name="budget" min="5" max="50" step="5" value="5">
@@ -231,7 +228,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 			<a href="#" class="btn btn-red btn-submit">Let the magic happen</a>
 
 		</section>
-
+	</form>
 	</div>
 <!-- Hammer includes -->
 	<section class="footer">
