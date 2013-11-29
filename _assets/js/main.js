@@ -91,7 +91,7 @@ var $required = $(".required");
             requiredFilledIn();
         });
 
-        $("form").on("keyup", ".row input[type='text']:odd", function(){
+        $("form").on("keyup", ".row input[type='email']", function(){
             //check email
             if(validEmail($(this).val()))
                 $(this).css({"border-bottom":"2.5px solid #57D99A"}).prev().css({"border-bottom":"2.5px solid #57D99A"});
@@ -99,6 +99,11 @@ var $required = $(".required");
                 $(this).css({"border-bottom":"2.5px solid #E48681"}).prev().css({"border-bottom":"2.5px solid #E48681"});
         });
 
+
+        $("form").submit(function(){
+            if($("input").is(":empty"))
+                alert("Some Fields are Empty!"); 
+        });
 
 
  

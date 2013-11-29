@@ -35,6 +35,9 @@
 .pull-right {
   float: right; }
 
+.center {
+  text-align: center; }
+
 /**
  * Big up @necolas: nicolasgallagher.com/micro-clearfix-hack
  */
@@ -254,25 +257,20 @@ a.btn.btn-red:active {
   background-color: #df726c; }
 
 .row.add input {
-  width: 5%;
-  text-align: center; }
+  width: 5%; }
 
 .btn-plus {
   background-color: #5fdb9f;
   font-size: 20px;
   font-size: 1.25rem; }
 
-.btn-plus:hover {
+a.btn-plus:hover {
   background-color: #57d99a;
   text-decoration: none; }
 
-.btn-plus:active {
+a.btn-plus:active {
   background-color: #4ad693;
   text-decoration: none; }
-
-.plus-input {
-  width: 10%;
-  text-align: center; }
 
 input[type="number"] {
   border: none;
@@ -292,6 +290,7 @@ input[type=number]::-webkit-inner-spin-button {
   display: block;
   width: 8px;
   color: #e4e4e4;
+  text-align: center;
   position: relative; }
 
 input[type=number]::-webkit-inner-spin-button:before,
@@ -317,8 +316,7 @@ input[type=number]::-webkit-inner-spin-button:after {
   margin-top: 3.25em; }
 
 .budget {
-  margin: 2.25em auto;
-  text-align: center; }
+  margin: 2.25em auto; }
 
 span.pound {
   color: #e4e4e4;
@@ -350,7 +348,7 @@ span.pound {
   transition: opacity 0.2s ease;
   opacity: 0; }
 
-.form input[type="text"] {
+.form input[type="text"], .form input[type="email"] {
   width: 45%;
   border: 0 none;
   border-bottom: 2.5px solid #e4e4e4;
@@ -359,14 +357,14 @@ span.pound {
   color: #e4e4e4;
   font-size: 20px;
   font-size: 1.25rem; }
-  .form input[type="text"]:focus {
+  .form input[type="text"]:focus, .form input[type="email"]:focus {
     outline: none;
     box-shadow: none;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     -o-box-shadow: none;
     -ms-box-shadow: none; }
-  .form input[type="text"]:nth-of-type(odd) {
+  .form input[type="text"]:nth-of-type(odd), .form input[type="email"]:nth-of-type(odd) {
     margin-right: 9%; }
 
 .border {
