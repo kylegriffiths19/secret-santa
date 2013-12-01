@@ -259,9 +259,13 @@ a.btn.btn-red:hover {
 a.btn.btn-red:active {
   background-color: #df726c; }
 
-.row.add input {
-  width: 5%;
-  text-align: center; }
+.row.add {
+  position: relative;
+  margin-bottom: 3.25em; }
+  .row.add input {
+    position: absolute;
+    width: 5%;
+    text-align: center; }
 
 .btn-plus {
   background-color: #5fdb9f;
@@ -281,7 +285,7 @@ a.btn.btn-red:active {
   text-align: center; }
 
 .options {
-  margin-top: 3.25em; }
+  margin-top: 2em; }
 
 .budget {
   margin: 2.25em auto;

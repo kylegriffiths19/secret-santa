@@ -81,9 +81,14 @@ a.btn.btn-red:active {
 
 
 //new rows button
-.row.add input{
-	width: 5%;
-	text-align: center;
+.row.add {
+	position: relative;
+	margin-bottom: 3.25em;
+	input {
+		position: absolute;
+		width: 5%;
+		text-align: center;
+	}
 }
 .btn-plus{
 	background-color: $green;
@@ -106,7 +111,7 @@ a.btn.btn-red:active {
 
 //options
 .options{
-	margin-top: 3.25em;
+	margin-top: 2em;
 }
 
 .budget{
