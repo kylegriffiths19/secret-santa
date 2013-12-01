@@ -15,6 +15,12 @@
 	Site Wide Components
 ============================================*/
 
+//logo
+.title{
+	text-align: center;
+	margin: 2.5em 0 5em 0;
+}
+
 //general layout
 .row{
 	display: block;
@@ -23,10 +29,13 @@
 	text-align: center;
 }
 
-//logo
-.title{
-	text-align: center;
-	margin: 2.5em 0em;
+.input input {
+	&:first-child {
+		float: left;
+	}
+	&:last-child {
+		float: right;
+	}
 }
 
 //Submit Button
@@ -71,89 +80,46 @@ a.btn.btn-red:active {
 
 
 
-
-
-
 //new rows button
-.row.add input{
-	width: 5%;
+.row.add {
+	position: relative;
+	margin-bottom: 3.25em;
+	input {
+		position: absolute;
+		width: 5%;
+		text-align: center;
+	}
 }
 .btn-plus{
 	background-color: $green;
 	@include font-size(20);
 }
-a.btn-plus:hover{
+.btn-plus:hover{
 	background-color: darken($green, 2%);
 	text-decoration: none;
 }
-a.btn-plus:active{
+.btn-plus:active{
 	background-color: darken($green, 5%);
 	text-decoration: none;
 }
 
-
-
-input[type="number"]{
-	border: none;
-	background-color: inherit;
-	color: $copy;
-	@include font-size(20);
-	&:focus{
-		box-shadow: none;
-		outline: none;
-	}
-
-}
-
-input[type=number]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    cursor:pointer;
-    display:block;
-    width:8px;
-    color: $copy;
-    text-align:center;
-    position:relative;
-}
-
-input[type=number]::-webkit-inner-spin-button:before,
-input[type=number]::-webkit-inner-spin-button:after {
-    content: "^";
-    position:absolute;
-    right: 0;
-    font-family:monospace;
-    line-height:1;
-}
-
-input[type=number]::-webkit-inner-spin-button:before {
-    top:5px;
-}
-
-input[type=number]::-webkit-inner-spin-button:after {
-    bottom:0px;
-    transform: rotate(180deg);
-    -webkit-transform: rotate(180deg);
-    -moz-transform: rotate(180deg);
-    -o-transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
+.plus-input{
+	width: 10%;
+	text-align: center;
 }
 
 
 //options
 .options{
-	margin-top: 3.25em;
+	margin-top: 2em;
 }
 
-.budget{
-	margin: 2.25em auto;
-	
-}
-
-span.pound{
+.pound{
+	display: inline-block;
 	color: $copy;
 	font-size: 1.5em;
-	margin-right: 1em;
+	margin-right: .3em;
+	margin-top: .15em;
 }
 
 //footer
