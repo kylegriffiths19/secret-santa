@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 		$users = array_combine($name, $email); //becomes users array('name' => 'email')
 		$giver = $users; //assign users array to both givers and recievers
 		$receiver = $users;
-		
+
 
 
 		shuffle_assoc($giver); //shuffles the arrays
@@ -39,21 +39,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
 
-		//iterate through the giver array for the individuals. 
-		foreach ($giver as $giver_name => $email) { 
-		//Make sure that the giver and the receiver are not the same person 
-			while ($receiver[0] == $email) { 
-			//Shuffle the array to randomize it. 
+		//iterate through the giver array for the individuals.
+		foreach ($giver as $giver_name => $email) {
+		//Make sure that the giver and the receiver are not the same person
+			while ($receiver[0] == $email) {
+			//Shuffle the array to randomize it.
 				shuffle_assoc($receiver); }
 
-				//Grab the first person off the receiver array 
+				//Grab the first person off the receiver array
 				$r = $receiver[0];
 
 				//test
 				//echo $g . "gives to " . $r . " ";
-					
+
 				if(isValidEmail($email)){
-					
+
 					$mail_from = "secretsanta.com";
 					$mail_title = "Secret Santa";
 					$email_body = "Hello {$giver_name}
@@ -63,22 +63,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
 							Good luck and Merry Christmas,
 							Santa
-							". "\n"; 
+							". "\n";
 					echo $email_body;
-							
+
 							//Send em via normal PHP mail method
 							/*if(mail($g, $mail_title, $email_body, "From: {$mail_from}\r\n")){
 								echo "success";
 							} else{
 								echo "error";
 							}*/
-				} else{
+				} else {
 					echo "Sorry an Invalid Email was provided";
 				}
 
-				//Remove that first person from the array, so we only have ungifted people remaining. 
-				$receiver = array_slice($receiver,1);	
-				
+				//Remove that first person from the array, so we only have ungifted people remaining.
+				$receiver = array_slice($receiver,1);
+
 		}
 	}
 
@@ -92,7 +92,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
 ?>
-<!-- Hammer includes -->
 <!DOCTYPE html>
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if (IE 7) &!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
@@ -178,31 +177,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
 				<input type="text" name="name[]" placeholder="Name" class="required border" required>
 
-				<input type="text" name="email[]" placeholder="Email" class="required border" required>
-
 				<a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a>
 
+				<input type="text" name="email[]" placeholder="Email" class="required border" required>
+
 			</section>
+
 
 			<section class="row input">
 
 				<input type="text" name="name[]" placeholder="Name" class="required border" required>
 
-				<input type="text" name="email[]" placeholder="Email" class="required border" required>
-
 				<a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a>
 
+				<input type="text" name="email[]" placeholder="Email" class="required border" required>
+
 			</section>
+
 
 			<section class="row input">
 
 				<input type="text" name="name[]" placeholder="Name" class="required border" required>
 
-				<input type="text" name="email[]" placeholder="Email" class="required border" required>
-
 				<a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a>
 
-			</section>	
+				<input type="text" name="email[]" placeholder="Email" class="required border" required>
+
+			</section>
 		</form>
 
 	</div>
@@ -215,16 +216,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 			<a href="#" class="btn btn-plus ss-icon">&#x002B;</a>
 
 			<input type="number" min="1" max="50" value="1" class="plus-input">
-			
-			
+
 		</section>
 
+
 		<section class="row budget">
-			
+
 				<p>Set budget amount</p>
 				<span class="pound">&pound;</span><input type="number" id="budget" name="budget" min="5" max="50" step="5" value="5">
-			
+
 		</section>
+
 
 		<section class="row">
 
@@ -233,7 +235,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 		</section>
 
 	</div>
-<!-- Hammer includes -->
 	<section class="footer">
 		<p>&copy; The Idea Bureau</p>
 	</section>

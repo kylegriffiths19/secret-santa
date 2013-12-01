@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url(http://fonts.googleapis.com/css?family=Droid+Sans);
 /* ==========================================
 	Type Based Settings
@@ -209,15 +210,20 @@ h1, h2, h3, h4, h5, h6 {
 /* ==========================================
 	Site Wide Components
 ============================================*/
+.title {
+  text-align: center;
+  margin: 2.5em 0 5em 0; }
+
 .row {
   display: block;
   width: 100%;
   margin-bottom: 2em;
   text-align: center; }
 
-.title {
-  text-align: center;
-  margin: 2.5em 0em; }
+.input input:first-child {
+  float: left; }
+.input input:last-child {
+  float: right; }
 
 a.btn {
   color: #e4e4e4;
@@ -274,45 +280,6 @@ a.btn.btn-red:active {
   width: 10%;
   text-align: center; }
 
-input[type="number"] {
-  border: none;
-  background-color: inherit;
-  color: #e4e4e4;
-  font-size: 20px;
-  font-size: 1.25rem; }
-  input[type="number"]:focus {
-    box-shadow: none;
-    outline: none; }
-
-input[type=number]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  cursor: pointer;
-  display: block;
-  width: 8px;
-  color: #e4e4e4;
-  position: relative; }
-
-input[type=number]::-webkit-inner-spin-button:before,
-input[type=number]::-webkit-inner-spin-button:after {
-  content: "^";
-  position: absolute;
-  right: 0;
-  font-family: monospace;
-  line-height: 1; }
-
-input[type=number]::-webkit-inner-spin-button:before {
-  top: 5px; }
-
-input[type=number]::-webkit-inner-spin-button:after {
-  bottom: 0px;
-  transform: rotate(180deg);
-  -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
-  -ms-transform: rotate(180deg); }
-
 .options {
   margin-top: 3.25em; }
 
@@ -351,7 +318,7 @@ span.pound {
   opacity: 0; }
 
 .form input[type="text"] {
-  width: 45%;
+  width: 40%;
   border: 0 none;
   border-bottom: 2.5px solid #e4e4e4;
   line-height: 1;
@@ -366,8 +333,6 @@ span.pound {
     -moz-box-shadow: none;
     -o-box-shadow: none;
     -ms-box-shadow: none; }
-  .form input[type="text"]:nth-of-type(odd) {
-    margin-right: 9%; }
 
 .border {
   border-bottom: 2.5px solid #e4e4e4; }
@@ -377,3 +342,42 @@ span.pound {
 
 .error {
   border-bottom: 2.5px solid #E48681; }
+
+input[type="number"] {
+  border: none;
+  background-color: inherit;
+  color: #e4e4e4;
+  font-size: 20px;
+  font-size: 1.25rem; }
+  input[type="number"]:focus {
+    box-shadow: none;
+    outline: none; }
+
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  display: block;
+  width: 8px;
+  color: #e4e4e4;
+  position: relative; }
+
+input[type=number]::-webkit-inner-spin-button:before,
+input[type=number]::-webkit-inner-spin-button:after {
+  content: "^";
+  position: absolute;
+  right: 0;
+  font-family: monospace;
+  line-height: 1; }
+
+input[type=number]::-webkit-inner-spin-button:before {
+  top: 5px; }
+
+input[type=number]::-webkit-inner-spin-button:after {
+  bottom: 0px;
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg); }
