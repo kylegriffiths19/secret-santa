@@ -31,13 +31,23 @@
 
 //form
 .form input[type="text"]{
-	width: 40%;
+	width: 80%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 	border: 0 none;
 	border-bottom: 2.5px solid $copy;
 	line-height: 1;
 	background-color: $bg;
 	color: $copy;
+	margin-bottom: 2em;
 	@include font-size(20);
+
+	@include mq($desktop) {
+		width: 40%;
+		margin-bottom: 0;
+	}
+
 	&:focus{
 		outline: none;
 		box-shadow: none;

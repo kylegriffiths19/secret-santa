@@ -15,6 +15,25 @@
 /* ==========================================
 	Color Based Mixins
 ============================================*/
+/* ==========================================
+	Media Queries
+============================================*/
+/**
+ * Popular breakpoints (taken from the grid)
+ */
+/**
+ * Example of use
+ *
+
+	P{
+		font-size: 12px;
+		@include mq($tablet){
+			font-size 20px;
+		}
+	}
+
+ *
+ */
 /**
  * As per: stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code
  */
@@ -220,10 +239,13 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 2em;
   text-align: center; }
 
-.input input:first-child {
-  float: left; }
-.input input:last-child {
-  float: right; }
+.input input {
+  float: none; }
+  @media screen and (min-width: 37.5em) {
+    .input input {
+      float: right; }
+      .input input:first-child {
+        float: left; } }
 
 a.btn {
   color: #e4e4e4;
@@ -264,7 +286,7 @@ a.btn.btn-red:active {
   margin-bottom: 3.25em; }
   .row.add input {
     position: absolute;
-    width: 5%;
+    width: 3.125em;
     text-align: center; }
 
 .btn-plus {
@@ -320,14 +342,22 @@ a.btn.btn-red:active {
   opacity: 0; }
 
 .form input[type="text"] {
-  width: 40%;
+  width: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   border: 0 none;
   border-bottom: 2.5px solid #e4e4e4;
   line-height: 1;
   background-color: #272727;
   color: #e4e4e4;
+  margin-bottom: 2em;
   font-size: 20px;
   font-size: 1.25rem; }
+  @media screen and (min-width: 37.5em) {
+    .form input[type="text"] {
+      width: 40%;
+      margin-bottom: 0; } }
   .form input[type="text"]:focus {
     outline: none;
     box-shadow: none;

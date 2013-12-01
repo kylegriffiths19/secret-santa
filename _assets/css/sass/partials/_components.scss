@@ -30,11 +30,14 @@
 }
 
 .input input {
-	&:first-child {
-		float: left;
-	}
-	&:last-child {
+	float: none;
+
+	@include mq($desktop) {
 		float: right;
+
+		&:first-child {
+			float: left;
+		}
 	}
 }
 
@@ -86,7 +89,7 @@ a.btn.btn-red:active {
 	margin-bottom: 3.25em;
 	input {
 		position: absolute;
-		width: 5%;
+		width: 3.125em;
 		text-align: center;
 	}
 }
@@ -110,11 +113,11 @@ a.btn.btn-red:active {
 
 
 //options
-.options{
+.options {
 	margin-top: 2em;
 }
 
-.pound{
+.pound {
 	display: inline-block;
 	color: $copy;
 	font-size: 1.5em;

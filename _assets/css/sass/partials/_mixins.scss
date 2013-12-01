@@ -69,3 +69,48 @@
 	color: $color;
 	color: rgba($color, $value);
 }
+
+
+/* ==========================================
+	Media Queries
+============================================*/
+
+/**
+ * Popular breakpoints (taken from the grid)
+ */
+
+$desktop: 600;
+$basefont: 16;
+
+@mixin mq($point, $query1: min, $query2: width, $IE9: false) {
+
+@if $IE9 == true{
+	// if true then give an IE conditional class 'fallback' for oldIE
+	.lt-ie9 & {
+	  @content;
+	}
+   @media screen and (#{$query1}-#{$query2}: $point / $basefont +em) {
+	  @content;
+	}
+  }
+  @else {
+	// if not true (suggest writing - false - for clarity no 'fallback'
+	@media screen and (#{$query1}-#{$query2}: $point / $basefont +em) {
+	  @content;
+	}
+  }
+}
+
+/**
+ * Example of use
+ *
+
+	P{
+		font-size: 12px;
+		@include mq($tablet){
+			font-size 20px;
+		}
+	}
+
+ *
+ */

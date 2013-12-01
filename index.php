@@ -168,40 +168,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 	</div>
 
 
-	<div role="main" class="form">
+	<div role="main" class="form cf">
 		<form method="POST" action="">
 			<input type='hidden' id='budget_amount' name='amount' value='5' />
 			<input type="hidden" name="hidden_submit" id="hidden_submit">
 			<input type="hidden" name="count" value="">
-			<section class="row input">
+			<section class="row input cf">
 
 				<input type="text" name="name[]" placeholder="Name" class="required border" required>
 
-				<a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a>
-
 				<input type="text" name="email[]" placeholder="Email" class="required border" required>
+
+				<a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a>
 
 			</section>
 
 
-			<section class="row input">
+			<section class="row input cf">
 
 				<input type="text" name="name[]" placeholder="Name" class="required border" required>
 
-				<a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a>
-
 				<input type="text" name="email[]" placeholder="Email" class="required border" required>
+
+				<a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a>
 
 			</section>
 
 
-			<section class="row input">
+			<section class="row input cf">
 
 				<input type="text" name="name[]" placeholder="Name" class="required border" required>
 
-				<a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a>
-
 				<input type="text" name="email[]" placeholder="Email" class="required border" required>
+
+				<a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a>
 
 			</section>
 		</form>
@@ -220,10 +220,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 		</section>
 
 
-		<section class="row budget">
+		<section class="row budget cf">
 
 				<p>Set budget amount</p>
-				<span class="pound">&pound;</span><input type="number" id="budget" name="budget" min="5" max="500" step="5" value="5">
+				<span class="pound">&pound;</span>
+				<input type="number" id="budget" name="budget" min="5" max="500" step="5" value="5">
 
 		</section>
 
