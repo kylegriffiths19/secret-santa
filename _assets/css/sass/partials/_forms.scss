@@ -29,52 +29,97 @@
 	opacity: 0;
 }
 
-//form
-.form input[type="text"]{
-	width: 80%;
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	border: 0 none;
-	border-bottom: 2.5px solid $copy;
-	line-height: 1;
-	background-color: $bg;
-	color: $copy;
-	margin-bottom: 2em;
-	@include font-size(20);
+.form .row, .row.add {
+	padding-bottom: 3.125em;
 
 	@include mq($desktop) {
-		width: 40%;
-		margin-bottom: 0;
+		padding-bottom: 0;
 	}
 
-	&:focus{
-		outline: none;
-		box-shadow: none;
-		-webkit-box-shadow: none;
-		-moz-box-shadow: none;
-		-o-box-shadow: none;
-		-ms-box-shadow: none;
+	&:after {
+		position: absolute;
+		display: block;
+		bottom: 0;
+		text-transform: none;
+		left: 0;
+		right: 0;
+		color: $copy;
+
+		@include mq($desktop) {
+			display: none;
+		}
+	}
+}
+
+//form
+.form {
+	.row {
+		position: relative;
+
+		&:after {
+			content: 'Remove section?';
+		}
+
+		input {
+			float: none;
+
+			@include mq($desktop) {
+				float: right;
+
+				&:first-child {
+					float: left;
+				}
+			}
+		}
+	}
+
+	input[type="text"]{
+		width: 80%;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		border: 0 none;
+		border-bottom: 2.5px solid $copy;
+		line-height: 1;
+		background-color: $bg;
+		color: $copy;
+		margin-bottom: 2em;
+		@include font-size(20);
+
+		@include mq($desktop) {
+			width: 40%;
+			margin-bottom: 0;
+		}
+
+		&:focus{
+			outline: none;
+			box-shadow: none;
+			-webkit-box-shadow: none;
+			-moz-box-shadow: none;
+			-o-box-shadow: none;
+			-ms-box-shadow: none;
+		}
 	}
 }
 
 
-.border{
+.border {
 	border-bottom: 2.5px solid $copy;
 }
-.success{
+.success {
 	border-bottom: 2.5px solid #57D99A;
 }
-.error{
+.error {
 	border-bottom:2.5px solid #E48681;
 }
 
-input[type="number"]{
+input[type="number"] {
 	border: none;
 	background-color: inherit;
 	color: $copy;
 	@include font-size(20);
-	&:focus{
+
+	&:focus {
 		box-shadow: none;
 		outline: none;
 	}
@@ -85,28 +130,28 @@ input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    cursor:pointer;
-    display:block;
-    width:8px;
+    cursor: pointer;
+    display: block;
+    width: 8px;
     color: $copy;
-    position:relative;
+    position: relative;
 }
 
 input[type=number]::-webkit-inner-spin-button:before,
 input[type=number]::-webkit-inner-spin-button:after {
     content: "^";
-    position:absolute;
+    position: absolute;
     right: 0;
-    font-family:monospace;
-    line-height:1;
+    font-family: monospace;
+    line-height: 1;
 }
 
 input[type=number]::-webkit-inner-spin-button:before {
-    top:5px;
+    top: 5px;
 }
 
 input[type=number]::-webkit-inner-spin-button:after {
-    bottom:0px;
+    bottom: 0px;
     transform: rotate(180deg);
     -webkit-transform: rotate(180deg);
     -moz-transform: rotate(180deg);

@@ -173,7 +173,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 			<input type='hidden' id='budget_amount' name='amount' value='5' />
 			<input type="hidden" name="hidden_submit" id="hidden_submit">
 			<input type="hidden" name="count" value="">
-			<section class="row input cf">
+			<section class="row cf">
 
 				<input type="text" name="name[]" placeholder="Name" class="required border" required>
 
@@ -184,7 +184,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 			</section>
 
 
-			<section class="row input cf">
+			<section class="row cf">
 
 				<input type="text" name="name[]" placeholder="Name" class="required border" required>
 
@@ -195,7 +195,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 			</section>
 
 
-			<section class="row input cf">
+			<section class="row cf">
 
 				<input type="text" name="name[]" placeholder="Name" class="required border" required>
 
@@ -209,7 +209,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 	</div>
 
 
-	<div class="options">
+	<div class="options cf">
 
 		<section class="row add">
 
