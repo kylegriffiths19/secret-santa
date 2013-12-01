@@ -96,9 +96,9 @@ var $required = $(".required");
     $("form").on("keyup", ".row input[type='text']:odd", function(){
         //check email
         if(validEmail($(this).val())) {
-            $(this).css({"border-bottom":"2.5px solid #57D99A"}).prev().css({"border-bottom":"2.5px solid #57D99A"});
+            $(this).css({"border-bottom":"2.5px solid #57D99A"}).prev().prev().css({"border-bottom":"2.5px solid #57D99A"});
         } else {
-            $(this).css({"border-bottom":"2.5px solid #E48681"}).prev().css({"border-bottom":"2.5px solid #E48681"});
+            $(this).css({"border-bottom":"2.5px solid #E48681"}).prev().prev().css({"border-bottom":"2.5px solid #E48681"});
         }
     });
 
