@@ -31,10 +31,10 @@ $(".btn-plus").on("click", function(e){
 
 
 //set budget
-$("#budget_amount").on("change", function(){
-    alert("test");
+
+$("#budget").on("change", function(){
     var current_amount = $("#budget").val();
-    $(this).val(current_amount);
+    $("#budget_amount").val(current_amount);
 });
 
 

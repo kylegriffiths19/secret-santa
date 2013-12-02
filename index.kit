@@ -1,43 +1,39 @@
 <?php
-
-if ($_SERVER["REQUEST_METHOD"] == "POST"){
-
-
-	function isValidEmail($email) {
+//functions
+function isValidEmail($email) {
 		return strpos($email, "@") !== false;
 	}
 
-	//shuffles assoc array keeping key => value pairs in tact
-	function shuffle_assoc(&$array) {
-        $keys = array_keys($array);
+//shuffles assoc array keeping key => value pairs in tact
+function shuffle_assoc(&$array) {
+	$keys = array_keys($array);
 
-        shuffle($keys);
+	shuffle($keys);
 
-        foreach($keys as $key) {
-            $new[$key] = $array[$key];
-        }
+	foreach($keys as $key) {
+    	$new[$key] = $array[$key];
+	}
 
-        $array = $new;
+		$array = $new;
 
-        return true;
-    }
+		return true;
+}
 
-	if (isset($_POST['hidden_submit'])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
+
+    //budget amount
+    $amount = $_POST['amount'];
+
+	if (isset($_POST['hidden_submit']) && $_POST['name'] >= 2) {
 		$name = $_POST['name'];//array of names
 		$email = $_POST['email'];//array of emails
-		//get spend amount
-		$amount = $_POST['amount'];
+		
 		$users = array_combine($name, $email); //becomes users array('name' => 'email')
 		$giver = $users; //assign users array to both givers and recievers
 		$receiver = $users;
 
-
-
 		shuffle_assoc($giver); //shuffles the arrays
 		shuffle_assoc($receiver);
-
-
-
 
 		//iterate through the giver array for the individuals.
 		foreach ($giver as $giver_name => $email) {
@@ -56,14 +52,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
 					$mail_from = "secretsanta.com";
 					$mail_title = "Secret Santa";
-					$email_body = "Hello {$giver_name}
+					$email_body = "Hello {$giver_name},
+									for Secret Santa this year you will be buying a present for" . key($receiver) . ". " .
+									"Presents should all be around £$amount,
 
-							For Secret Santa this year you will be buying a present for" . key($receiver) .
-							"Presents should all be around £$amount,
-
-							Good luck and Merry Christmas,
-							Santa
-							". "\n";
+									Good luck and Merry Christmas,
+									Santa
+									". "\n";
 					echo $email_body;
 
 							//Send em via normal PHP mail method
@@ -81,15 +76,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
 		}
 	}
-
+	else{ 
 		//Ensure some people actually entered the Secret Santa
-		if(count($_POST['name'])<2) die("Only one valid user was detected. Please ensure you fill out the form fully.");
-		//Ensure we aren't going to send to many emails.
-		if(count($_POST['name'])>50) die("Sorry, but due to risk of spamming this script is limited on only allow secret santa's of up to 50 people.");
-
+		exit("Only one valid user was detected. Please ensure you fill out the form fully."); 
 	}
-
-
+}
 
 ?>
 <!-- @include _components/_header.kit -->
@@ -103,9 +94,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
 	<div role="main" class="form cf">
 		<form method="POST" action="">
-			<input type='hidden' id='budget_amount' name='amount' value='5' />
+			<input type='hidden' id='budget_amount' name='amount' value='10' />
 			<input type="hidden" name="hidden_submit" id="hidden_submit">
-			<input type="hidden" name="count" value="">
+
 			<section class="row cf">
 
 				<input type="text" name="name[]" placeholder="Name" class="required border" required>
@@ -157,7 +148,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
 				<p>Set budget amount</p>
 				<span class="pound">&pound;</span>
-				<input type="number" id="budget" name="budget" min="5" max="500" step="5" value="5">
+				<input type="number" id="budget" name="budget" min="5" max="500" step="5" value="10">
 
 		</section>
 
