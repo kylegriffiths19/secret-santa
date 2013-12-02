@@ -25,7 +25,7 @@ $(".btn-plus").on("click", function(e){
 
 	for(var i = 0; i < count; i++) {
         //name_counter++;
-		$('<section class="row input"><input type="text" name="name[]" placeholder="Name"><a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a><input type="text" name="email[]" placeholder="Email"></section>').appendTo(".form form");
+		$('<section class="row input"><input type="text" name="name[]" placeholder="Name"><input type="text" name="email[]" placeholder="Email"><a href="#" class="btn btn-red btn-remove ss-icon">&#x002D;</a></section>').appendTo(".form form");
 	}
 });
 
