@@ -29,7 +29,7 @@
 	opacity: 0;
 }
 
-.form .row, .row.add {
+.form .row, .row.add, .row.budget {
 	padding-bottom: 3.125em;
 
 	@include mq($desktop) {
@@ -50,6 +50,8 @@
 		}
 	}
 }
+
+
 
 //form
 .form {

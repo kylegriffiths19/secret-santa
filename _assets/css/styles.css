@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @import url(http://fonts.googleapis.com/css?family=Droid+Sans);
 /* ==========================================
 	Type Based Settings
@@ -306,19 +305,42 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #4ad693;
     text-decoration: none; }
 
-.plus-input {
-  width: 10%;
-  text-align: center; }
-
-.options {
-  margin-top: 2em; }
-
 .pound {
   display: inline-block;
   color: #e4e4e4;
   font-size: 1.5em;
   margin-right: .3em;
   margin-top: .15em; }
+  .pound:after {
+    display: none; }
+    @media screen and (min-width: 37.5em) {
+      .pound:after {
+        content: 'Set the Budget';
+        position: absolute;
+        display: block;
+        top: 25%;
+        right: 0%;
+        text-transform: none;
+        font-size: .9rem;
+        letter-spacing: .1em;
+        width: 123%; } }
+
+.row.budget {
+  position: relative;
+  margin-bottom: 3.25em; }
+  .row.budget:after {
+    content: 'Set the Budget'; }
+  .row.budget input {
+    position: absolute;
+    width: 3.125em;
+    text-align: center; }
+
+.plus-input {
+  width: 10%;
+  text-align: center; }
+
+.options {
+  margin-top: 2em; }
 
  /* ==========================================
 	Page Specific
@@ -341,12 +363,12 @@ h1, h2, h3, h4, h5, h6 {
   transition: opacity 0.2s ease;
   opacity: 0; }
 
-.form .row, .row.add {
+.form .row, .row.add, .row.budget {
   padding-bottom: 3.125em; }
   @media screen and (min-width: 37.5em) {
-    .form .row, .row.add {
+    .form .row, .row.add, .row.budget {
       padding-bottom: 0; } }
-  .form .row:after, .row.add:after {
+  .form .row:after, .row.add:after, .row.budget:after {
     position: absolute;
     display: block;
     bottom: 0;
@@ -355,7 +377,7 @@ h1, h2, h3, h4, h5, h6 {
     right: 0;
     color: #e4e4e4; }
     @media screen and (min-width: 37.5em) {
-      .form .row:after, .row.add:after {
+      .form .row:after, .row.add:after, .row.budget:after {
         display: none; } }
 
 .form .row {

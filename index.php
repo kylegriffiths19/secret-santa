@@ -202,7 +202,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
 	<div class="options cf">
 
-		<section class="row add">
+		<section class="row add cf">
 
 			<a href="#" class="btn btn-plus ss-icon">&#x002B;</a>
 
@@ -212,15 +212,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
 		<section class="row budget cf">
-
-				<p>Set budget amount</p>
-				<span class="pound">&pound;</span>
-				<input type="number" id="budget" name="budget" min="5" max="500" step="5" value="10">
-
+			
+			<span class="pound">&pound;</span>
+			<input type="number" id="budget" name="budget" min="5" max="500" step="5" value="10">
+			
 		</section>
 
 
-		<section class="row">
+		<section class="row cf">
 
 			<a href="#" class="btn btn-red btn-submit">Let the magic happen</a>
 
