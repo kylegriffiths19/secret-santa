@@ -145,8 +145,26 @@
 	margin-top: 2em;
 }
 
-
+//validation
+.error-message{
+	display: none;
+	padding-bottom: .625em;
+	color: $red;
+}
 
  /* ==========================================
 	Page Specific
 ============================================*/
+
+//success page
+
+.emails-sent li{
+	@include nobullet;
+	margin-bottom: 1.25em;
+}
+
+.verification-message{
+	& p{
+		font-size: 1.25rem;
+	}
+}

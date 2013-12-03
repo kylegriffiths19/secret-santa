@@ -342,9 +342,21 @@ h1, h2, h3, h4, h5, h6 {
 .options {
   margin-top: 2em; }
 
+.error-message {
+  display: none;
+  padding-bottom: .625em;
+  color: #e48681; }
+
  /* ==========================================
 	Page Specific
 ============================================*/
+.emails-sent li {
+  list-style-type: none;
+  margin-bottom: 1.25em; }
+
+.verification-message p {
+  font-size: 1.25rem; }
+
 [placeholder]:focus::-webkit-input-placeholder {
   transition: opacity 0.2s ease;
   opacity: 0; }
