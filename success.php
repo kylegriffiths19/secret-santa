@@ -1,4 +1,93 @@
+<?php
+	//functions
+function isValidEmail($email) {
+		return strpos($email, "@") !== false;
+	}
 
+//shuffles assoc array keeping key => value pairs in tact
+function shuffle_assoc(&$array) {
+	$keys = array_keys($array);
+
+	shuffle($keys);
+
+	foreach($keys as $key) {
+    	$new[$key] = $array[$key];
+	}
+
+		$array = $new;
+
+		return true;
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
+
+    //budget amount
+    $amount = $_POST['amount'];
+
+	if (isset($_POST['hidden_submit']) && $_POST['name'] >= 2) {
+		$name = $_POST['name'];//array of names
+		$email = $_POST['email'];//array of emails
+
+		$users = array_combine($name, $email); //becomes users array('name' => 'email')
+		$giver = $users; //assign users array to both givers and recievers
+		$receiver = $users;
+
+		$sent_emails = $users;
+
+		shuffle_assoc($giver); //shuffles the arrays
+		shuffle_assoc($receiver);
+
+		//iterate through the giver array for the individuals.
+		foreach ($giver as $giver_name => $email) {
+		//Make sure that the giver and the receiver are not the same person
+			
+			while (reset($receiver) == $email) {
+			//Shuffle the array to randomize it.
+				shuffle_assoc($receiver); }
+
+				//Grab the first person off the receiver array
+				$r = reset($receiver);
+
+				//test
+				//echo $g . "gives to " . $r . " ";
+
+				if(isValidEmail($email)){
+
+					$mail_from = "secretsanta.com";
+					$mail_title = "Secret Santa";
+					$email_body = "Hello {$giver_name},
+									for Secret Santa this year you will be buying a present for" . key($receiver) . ". " .
+									"Presents should all be around £$amount,
+
+									Good luck and Merry Christmas,
+									Santa
+									". "\n";
+					
+					echo $email_body;
+					
+
+							//Send em via normal PHP mail method
+							/*if(mail($g, $mail_title, $email_body, "From: {$mail_from}\r\n")){
+								echo "success";
+							} else{
+								echo "error";
+							}*/
+				} else {
+					echo "Sorry there was an error";
+				}
+
+				//Remove that first person from the array, so we only have ungifted people remaining.
+				$receiver = array_slice($receiver,1);
+
+		}
+	}
+	else{ 
+		//Ensure some people actually entered the Secret Santa
+		exit("Only one valid user was detected. Please ensure you fill out the form fully."); 
+	}
+}
+
+?>
 <!-- Hammer includes -->
 <!DOCTYPE html>
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -77,12 +166,20 @@
 
 
 	<div role="main" class="verification-message center">
-		<p>Success! The Emails have been sent.</p>
+		<p>Success! The Emails have been sent to the following recipients:</p>
+		<ul class="emails-sent">
+			<?php
+				foreach ($sent_emails as $emails) {
+					echo "<li>{$emails}</li>";
+				}
+			?>
+		</ul>
 		<a href="index.php" class="btn btn-red">Go back</a>
 	</div>
 <!-- Hammer includes -->
-	<p>&copy; The Idea Bureau</p>
-
+	<section class="footer">
+		<p>&copy; The Idea Bureau</p>
+	</section>
 	</div>
 	<!--
 	TODO: Check latest jQuery and Formalize.js
