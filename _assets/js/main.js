@@ -38,18 +38,36 @@ $("#budget").on("change", function(){
 });
 
 
-//submit form
-$(".btn-submit").on('click', function(e){
-
-	e.preventDefault();
-
-	$('.form form').submit();
-
-});
-
 //client-side validation
 var $submit = $(".btn-submit");
 var $required = $(".required");
+
+/*
+
+$('.form form').submit(function(e){
+    e.preventDefault(); 
+    
+    $('.form form').submit();
+});*/
+
+
+//submit form
+$(".btn-submit").on('click', function(e){
+
+    e.preventDefault();
+
+    $(".row input[type='text']").each(function(){
+
+        if($(this).val() === ""){
+            $(".error-message").text("One or more fields are empty!").show();
+        } 
+        else{
+            $('.form form').submit();
+        }
+    });
+});
+
+
 
     function containsBlanks(){
         var blanks = $required.map(function(){
@@ -64,7 +82,7 @@ var $required = $(".required");
     }
 
     function requiredFilledIn(){
-        if(containsBlanks() || !validEmail($(".row input[type='text']:odd").val()) && $(".btn-submit").hasClass("disabled")) {
+        if(containsBlanks() || !validEmail($(".row input[type='text']:odd").val())) {
 			return false;
         } else {
             $(".btn-submit").unbind("click", false);
@@ -88,10 +106,7 @@ var $required = $(".required");
     }
 
 
-    $("form").on("keyup", "input[type='text']", function(){
-        //check required fields
-        requiredFilledIn();
-    });
+
 
     $("form").on("keyup", ".row input[type='text']:odd", function(){
         //check email
