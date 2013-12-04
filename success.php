@@ -21,12 +21,13 @@ function shuffle_assoc(&$array) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
-    //budget amount
-    $amount = $_POST['amount'];
+    
 
 	if (isset($_POST['hidden_submit']) && $_POST['name'] >= 2) {
 		$name = $_POST['name'];//array of names
 		$email = $_POST['email'];//array of emails
+		//budget amount
+    	$amount = $_POST['amount'];
 
 		$users = array_combine($name, $email); //becomes users array('name' => 'email')
 		$giver = $users; //assign users array to both givers and recievers
@@ -83,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 	}
 	else{ 
 		//Ensure some people actually entered the Secret Santa
-		exit("Only one valid user was detected. Please ensure you fill out the form fully."); 
+		echo("Only one valid user was detected. Please ensure you fill out the form fully."); 
 	}
 }
 
@@ -165,15 +166,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 	</div>
 
 
-	<div role="main" class="verification-message center">
+	<div role="main" class="verification-message center row">
 		<p>Success! The Emails have been sent to the following recipients:</p>
 		<ul class="emails-sent">
 			<?php
-				foreach ($sent_emails as $emails) {
-					echo "<li>{$emails}</li>";
+				foreach ($sent_emails as $names => $emails) {
+					echo "<li>$names, $emails</li>";
 				}
 			?>
 		</ul>
+
+		<p>The Budget has been set at <span class="amount-output">£<?php echo $amount; ?></span></p>
+		<p>Good Luck and Merry Christmas!</p>
 		<a href="index.php" class="btn btn-red">Go back</a>
 	</div>
 <!-- Hammer includes -->
