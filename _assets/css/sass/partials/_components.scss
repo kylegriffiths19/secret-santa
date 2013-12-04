@@ -159,12 +159,21 @@
 //success page
 
 .emails-sent li{
+	display: block;
 	@include nobullet;
+	background-color: $green;
+	color: $bg;
+	font-weight: bold;
 	margin-bottom: 1.25em;
+	padding: .625em 0em;
 }
 
 .verification-message{
 	& p{
 		font-size: 1.25rem;
+		margin-bottom: 2em;
+	}
+	& .amount-output{
+		@include border(bottom, $width: 2.5px, $color:$red);
 	}
 }

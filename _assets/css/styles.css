@@ -351,11 +351,19 @@ h1, h2, h3, h4, h5, h6 {
 	Page Specific
 ============================================*/
 .emails-sent li {
+  display: block;
   list-style-type: none;
-  margin-bottom: 1.25em; }
+  background-color: #5fdb9f;
+  color: #272727;
+  font-weight: bold;
+  margin-bottom: 1.25em;
+  padding: .625em 0em; }
 
 .verification-message p {
-  font-size: 1.25rem; }
+  font-size: 1.25rem;
+  margin-bottom: 2em; }
+.verification-message .amount-output {
+  border-bottom: 2.5px solid #e48681; }
 
 [placeholder]:focus::-webkit-input-placeholder {
   transition: opacity 0.2s ease;
